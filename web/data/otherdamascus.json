@@ -1,0 +1,26 @@
+[
+
+  {"id":40000,"category":"Damascus","SKU":"D10D12OC-14KY","finish":"polish","price":349,"tier":0,"image":"D10D12OC_14KY.jpg"},
+  {"id":40001,"category":"Damascus","SKU":"D6D","finish":"acid","price":159,"tier":0,"image":"D6D.jpg"},
+  {"id":40002,"category":"Damascus","SKU":"D6D11-PLATINUM","finish":"acid","price":389,"tier":0,"image":"D6D11_PLATINUM.jpg"},
+  {"id":40003,"category":"Damascus","SKU":"D6D13-MSSPD-14KRSLEEVE","finish":"polish","price":699,"tier":0,"image":"D6D13_MSSPD_14KRSLEEVE.jpg"},
+  {"id":40004,"category":"Damascus","SKU":"D6D2.5-SS","finish":"polish/acid","price":199,"tier":0,"image":"D6D2.5_SS.jpg"},
+  {"id":40005,"category":"Damascus","SKU":"D6DFLATTWIST","finish":"acid","price":199,"tier":0,"image":"D6DFLATTWIST.jpg"},
+  {"id":40006,"category":"Damascus","SKU":"D7C","finish":"acid","price":159,"tier":0,"image":"D7C.jpg"},
+  {"id":40007,"category":"Damascus","SKU":"D7D11ANGLE-14KR","finish":"polish/acid","price":295,"tier":0,"image":"D7D11ANGLE_14KR.jpg"},
+  {"id":40008,"category":"Damascus","SKU":"D7D12OC-14KR","finish":"dull polish","price":309,"tier":0,"image":"D7D12OC_14KR.jpg"},
+  {"id":40009,"category":"Damascus","SKU":"D7D21-14KW","finish":"polish","price":259,"tier":0,"image":"D7D21_14KW.jpg"},
+  {"id":40010,"category":"Damascus","SKU":"D8BSQFLATTWIST11OC-14KR","finish":"polish","price":299,"tier":0,"image":"D8BSQFLATTWIST11OC_14KR.jpg"},
+  {"id":40011,"category":"Damascus","SKU":"D8D11OC-14KR","finish":"acid","price":259,"tier":0,"image":"D8D11OC_14KR.jpg"},
+  {"id":40012,"category":"Damascus","SKU":"D8D11OC-SS","finish":"polish","price":199,"tier":0,"image":"D8D11OC_SS.jpg"},
+  {"id":40013,"category":"Damascus","SKU":"D9B12OC-14KR","finish":"acid","price":279,"tier":0,"image":"D9B12OC_14KR.jpg"},
+  {"id":40014,"category":"Damascus","SKU":"D9D12-14KR","finish":"polish","price":329,"tier":0,"image":"D9D12_14KR.jpg"},
+  {"id":40015,"category":"Damascus","SKU":"D9D21-SS2MIL","finish":"polish","price":209,"tier":0,"image":"D9D21_SS2MIL.jpg"},
+  {"id":40016,"category":"Damascus","SKU":"D8D1.5","finish":"acid/bead","price":0,"tier":0,"image":"D8D1_5.jpg"},
+  {"id":40017,"category":"Damascus","SKU":"D8DFLATTWIST","finish":"polish","price":0,"tier":0,"image":"D8DFLATTWIST.jpg"}
+
+
+
+
+]
+

@@ -1,0 +1,9 @@
+[
+    {"id":501,"category":"Meteorite","SKU":"7F15/METEORITE","finish":"POLISH","price":299,"tier":1,"image":"PF7F15_METEORITE.jpg"},
+
+    {"id":502,"category":"Meteorite","SKU":"Z8D15/METEORITE","finish":"POLISH","price":379,"tier":2,"image":"ZPF8D15_METEORITE.jpg"},
+
+    {"id":503,"category":"Meteorite","SKU":"CC9B15(NS)/METEORITE","finish":"ROCK POLISH","price":394,"tier":4,"image":"CC9B15_METEORITE.jpg"}
+
+]
+

@@ -1,0 +1,13 @@
+name: Lashbrook_Sales
+description: A Polymer Dart application.
+dependencies:
+  polymer: ">=0.15.1 <0.17.0"
+  core_elements: any
+  paper_elements: any
+  intl: any
+  lawndart: any
+  redstone: any
+  shelf_static: any
+transformers:
+- polymer:
+    entry_points: web/index.html

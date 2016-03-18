@@ -1,0 +1,12 @@
+[
+
+    {"id":701,"category":"Tungsten Ceramic","SKU":"CT08RC048","finish":"POLISH","price":129,"tier":1,"image":"TUC08RC048.jpg"},
+    {"id":702,"category":"Tungsten Ceramic","SKU":"CT09TG142","finish":"POLISH","price":129,"tier":1,"image":"CT09TG142_M5.jpg"},
+
+    {"id":703,"category":"Tungsten Ceramic","SKU":"TCR8335","finish":"POLISH/SAND","price":129,"tier":1,"image":"TCR8335_Pol_Sandblast.jpg"},
+
+    {"id":704,"category":"Tungsten Ceramic","SKU":"TCR8349","finish":"POLISH","price":129,"tier":2,"image":"TCR8349.jpg"},
+    {"id":705,"category":"Tungsten Ceramic","SKU":"TCR8422","finish":"SATIN/POLISH","price":129,"tier":2,"image":"TCR8422.jpg"}
+
+]
+

@@ -1,0 +1,37 @@
+[
+  {"id":10000,"category":"Camo","SKU":"10F(1)6G-RT/MAX4","finish":"polish","price":125,"tier":0,"image":"10F(1)6G-RT-MAX4.jpg"},
+  {"id":10001,"category":"Camo","SKU":"4F(1)3G-MOC/PBU","finish":"polish","price":125,"tier":0,"image":"4F(1)3G-MOC-PBU.jpg"},
+  {"id":10002,"category":"Camo","SKU":"4HR(1)3G-RT/APPURPLE","finish":"polish","price":125,"tier":0,"image":"4HR(1)3G-RT-APPURPLE.jpg"},
+  {"id":10003,"category":"Camo","SKU":"7HR(1)4G-RT/APPURPLE","finish":"polish","price":125,"tier":0,"image":"7HR(1)4G-RT-APPURPLE.jpg"},
+  {"id":10004,"category":"Camo","SKU":"CAMO5F14/RTMAX4","finish":"polish","price":139,"tier":0,"image":"CAMO5F14_RTMAX4.jpg"},
+  {"id":10005,"category":"Camo","SKU":"CAMO6FGE13/RTAP","finish":"polish","price":139,"tier":0,"image":"CAMO6FGE13_RTAP.jpg"},
+  {"id":10006,"category":"Camo","SKU":"CAMO7.5FGEW2UMIL14-RTMAX4","finish":"polish","price":139,"tier":0,"image":"CAMO7.5FGEW2UMIL14_RTMAX4.jpg"},
+  {"id":10007,"category":"Camo","SKU":"CAMO8B15-MOSSYOAK","finish":"polish","price":139,"tier":0,"image":"CAMO8B15_MOSSYOAK.jpg"},
+  {"id":10008,"category":"Camo","SKU":"CAMO8F1321A-RTAP","finish":"polish","price":139,"tier":0,"image":"CAMO8F1321A_RTAP.jpg"},
+  {"id":10009,"category":"Camo","SKU":"CAMO8F14-MOSSYOAK","finish":"polish","price":139,"tier":0,"image":"CAMO8F14_MOSSYOAK.jpg"},
+  {"id":10010,"category":"Camo","SKU":"CAMO9F14-RTAP","finish":"polish","price":139,"tier":0,"image":"CAMO9F14_RTAP.jpg"},
+  {"id":10011,"category":"Camo","SKU":"CCCAMO5F13CROWNPRINCZ1.0-PINKRT","finish":"polish","price":443,"tier":0,"image":"CCCAMO5F13CROWNPRINCZ1.0_PINKRT.jpg"},
+  {"id":10012,"category":"Camo","SKU":"CCCAMO6F13CROWNPRSAPH4MM-RTMAX","finish":"polish","price":542,"tier":0,"image":"CCCAMO6F13CROWNPRSAPH4MM_RTMAX.jpg"},
+  {"id":10013,"category":"Camo","SKU":"CCCAMO9B(S)15-RTAP","finish":"polish","price":199,"tier":0,"image":"CCCAMO9B(S)15_RTAP.jpg"},
+  {"id":10014,"category":"Camo","SKU":"CCCAMO9B15(NS)MOSSYOAK","finish":"rock polish","price":244,"tier":0,"image":"CCCAMO9B15(NS)MOSSYOAK.jpg"},
+  {"id":10015,"category":"Camo","SKU":"DCAMO8D14_RTAP","finish":"polish","price":309,"tier":0,"image":"DCAMO8D14_RTAP.jpg"},
+  {"id":10016,"category":"Camo","SKU":"FABLE8B(1)4G-RT-APRED","finish":"polish","price":125,"tier":0,"image":"FABLE8B(1)4G-RT-APRED.jpg"},
+  {"id":10017,"category":"Camo","SKU":"FABLE8HR(1)4G-RT-APSNOW","finish":"polish","price":125,"tier":0,"image":"FABLE8HR(1)4G-RT-APSNOW.jpg"},
+  {"id":10018,"category":"Camo","SKU":"FABLE-BZ-10F(1)6G-RT-APCAMO","finish":"polish","price":150,"tier":0,"image":"FABLE-BZ-10F(1)6G-RT-APCAMO.jpg"},
+  {"id":10019,"category":"King's Camo","SKU":"Z11F17_KINGSWOODLAND","finish":"hammer/polish","price":184,"tier":0,"image":"Z11F17_KINGSWOODLAND.jpg"},
+  {"id":10020,"category":"King's Camo","SKU":"Z12B18(NS)_KINGSWOODLAND","finish":"polish","price":169,"tier":0,"image":"Z12B18(NS)_KINGSWOODLAND.jpg"},
+  {"id":10021,"category":"Camo","SKU":"ZCAMO6B13-PINKTRAP","finish":"polish","price":139,"tier":0,"image":"ZCAMO6B13_PINKTRAP.jpg"},
+  {"id":10022,"category":"Camo","SKU":"ZCAMO9B15SEG-3XRTMAX4","finish":"silver/black","price":249,"tier":0,"image":"ZCAMO9B15SEG_3XRTMAX4.jpg"},
+  {"id":10023,"category":"King's Camo","SKU":"9F15/KINGSFIELD","finish":"hammer","price":0,"tier":0,"image":"9F15_KINGSFIELD.jpg"},
+  {"id":10024,"category":"King's Camo","SKU":"CC8D14/KINGSFIELD","finish":"sandblast","price":0,"tier":0,"image":"CC8D14_KINGSFIELD.jpg"},
+  {"id":10025,"category":"Camo","SKU":"CC9FGE15/MOSSYOAK","finish":"polish","price":0,"tier":0,"image":"CC9FGE15-MOSSYOAK_POLISH.jpg"},
+  {"id":10026,"category":"Camo","SKU":"CCCAMO5F13CROWNPRINCZ.75/PINKRTAP","finish":"polish","price":0,"tier":0,"image":"CAMO5F13CRWNPRNCZ75PINKRTAP.jpg"},
+  {"id":10027,"category":"King's Camo","SKU":"Z8B15(NS)KINGSMOUNTAINSHADOW","finish":"polish","price":0,"tier":0,"image":"Z8B15NS_KINGSMOUNTAINSHADOW.jpg"},
+  {"id":10028,"category":"King's Camo","SKU":"Z8D15/KINGSNOW","finish":"polish","price":0,"tier":0,"image":"Z8D15_KINGSNOW.jpg"},
+  {"id":10029,"category":"King's Camo","SKU":"Z8F16/KINGSDESERT","finish":"polish","price":0,"tier":0,"image":"Z8F16_KINGSDESERT.jpg"}
+
+
+
+]
+
+

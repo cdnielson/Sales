@@ -1,0 +1,17 @@
+[
+
+    {"id":401,"category":"Damascus","SKU":"D7B","finish":"POLISH","price":159,"tier":1,"image":"D6B.jpg"},
+    {"id":402,"category":"Damascus","SKU":"D7D","finish":"ACID","price":159,"tier":1,"image":"D7D.jpg"},
+    {"id":403,"category":"Damascus","SKU":"D8DBTIGER","finish":"POLISH","price":199,"tier":1,"image":"D8DBTIGER.jpg"},
+    {"id":404,"category":"Damascus","SKU":"D8DFLATTWIST11OC/14KY","finish":"ACID","price":299,"tier":1,"image":"D8DFLATTWIST.jpg"},
+    {"id":405,"category":"Damascus","SKU":"D8D2.5","finish":"ACID/BEAD","price":159,"tier":2,"image":"D8D2_5_2.jpg"},
+    {"id":406,"category":"Damascus","SKU":"D8FSQZEBRA","finish":"POLISH","price":199,"tier":2,"image":"D8FSQZEBRA.jpg"},
+    {"id":407,"category":"Damascus","SKU":"D8F11ANGLED/SS","finish":"ACID/POLISH","price":239,"tier":3,"image":"D8F11ANGLED-SS_ACID_POLISH.jpg"},
+    {"id":408,"category":"Damascus","SKU":"D10D","finish":"ACID","price":199,"tier":4,"image":"D10D.jpg"},
+    {"id":409,"category":"Damascus","SKU":"D8CBZEBRA","finish":"ACID","price":199,"tier":4,"image":"D8CBZEBRA_3.jpg"},
+    {"id":410,"category":"Damascus","SKU":"D8DBASKET","finish":"POLISH","price":199,"tier":4,"image":"D8DBASKET.jpg"}
+
+
+
+]
+

@@ -1,0 +1,28 @@
+library otherrings;
+import 'package:polymer/polymer.dart';
+
+// include Polymer to have access to @observable
+
+class OtherRing extends Object with Observable{
+  final String category;
+  final String SKU;
+  final String finish;
+  final int price;
+  final String image;
+  final int tier;
+  final int id;
+
+  OtherRing(String this.category, String this.SKU, String this.finish, int this.price, String this.image, int this.tier, int this.id);
+
+  OtherRing.fromMap(Map<String, Object> map) : this(map["category"], map["SKU"], map["finish"], map["price"], map["image"], map["tier"], map["id"]);
+
+  @override String toString() => "$SKU";
+
+  @observable bool cleared = false;
+  @observable String added = "Add to Order";
+  @observable String icon = "add";
+
+
+}
+
+

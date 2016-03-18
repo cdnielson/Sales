@@ -1,0 +1,1966 @@
+
+<!-- Polymer Element HTML import links go here (above <polymer-element> tag) -->
+<link rel="import" href="../../../../packages/polymer/polymer.html" xmlns="http://www.w3.org/1999/html">
+<link rel="import" href="../../../../packages/core_elements/core_scaffold.html">
+<link rel="import" href="../../../../packages/core_elements/core_header_panel.html">
+<link rel="import" href="../../../../packages/core_elements/core_drawer_panel.html">
+<link rel="import" href="../../../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../../../packages/core_elements/core_menu.html">
+<link rel="import" href="../../../../packages/core_elements/core_selector.html">
+<link rel="import" href="../../../../packages/core_elements/core_item.html">
+<link rel="import" href="../../../../packages/core_elements/core_overlay.html">
+<link rel="import" href="../../../../packages/core_elements/core_overlay_layer.html">
+<link rel="import" href="../../../../packages/core_elements/core_pages.html">
+<link rel="import" href="../../../../packages/core_elements/core_drawer_panel.html">
+<link rel="import" href="../../../../packages/core_elements/core_ajax_dart.html">
+<link rel="import" href="../../../../packages/core_elements/core_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_input.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_checkbox.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_dialog.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_action_dialog.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_dialog_transition.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_radio_group.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_spinner.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_button.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_icon_button.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_toast.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_tabs.html">
+<link rel="import" href="../../../../packages/core_elements/core_toolbar.html">
+<link rel="import" href="../../../../packages/core_elements/core_list_dart.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_dropdown_menu.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_dropdown.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_item.html">
+<link rel="import" href="../../../../packages/paper_elements/paper_dropdown_menu.html">
+
+
+<polymer-element name="rings-view"><!--attributes="page"-->
+  <template><!--if="{{page == 'login'}}"-->
+
+    <style>
+      :host {
+        height: 100%;
+      }
+
+      #drawer-header {
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+
+      .menu-header-text {
+        font-size: 0.9em;
+      }
+
+      .content {
+        padding: 0 15px;
+      }
+
+      .box-container {
+        /*width: 95%;
+        border: 1px solid #ccc;
+        padding: 10px;*/
+          /*display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: flex-start;*/
+        background-color: white;
+      }
+
+      #accessories-container {
+        z-index: 500;
+        position: absolute;
+
+      }
+
+      img {
+        -moz-user-drag: -moz-none;
+        -webkit-user-drag: none;
+        user-drag: none;
+      }
+
+      .ringinfo {
+        border: 1px solid black;
+        width: 150px;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+      }
+
+      .thumb {
+        width: 150px;
+      }
+
+      #ringImg {
+        z-index: 1000;
+        position: relative;
+        top: 1%;
+        left: 1%;
+        width: 98%;
+      }
+
+      .ringZoomWindow {
+        z-index: 999;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+        background: white;
+        overflow:scroll;
+
+      }
+
+      #removeZoom {
+        z-index: 1010;
+        position: relative;
+        top: 3%;
+        right: 3%;
+      }
+
+      #ringZoomData {
+        z-index: 1020;
+        position: relative;
+        top: 3%;
+        left: 3%;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 2em;
+      }
+
+      .strike {
+          color: red;
+        opacity: 0.7;
+      }
+
+      .selectclient {
+          font-weight: bold;
+      }
+
+      .added {
+        color: black;
+        font-weight: bold;
+      }
+
+      paper-radio-button::shadow {
+        background-color: #4285f4;
+      }
+
+      .buttonclass {
+        border-radius: 10px;
+        z-index: 5000;
+        background-color: #7998ac;
+        color: #ddc77c;
+      }
+
+      core-scaffold::shadow #headerPanel core-toolbar {
+        background-color: #003053;
+          height: 0;
+      }
+
+      paper-toast {
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          color: white;
+          font-size: 3em;
+          background-color: #003053;
+          z-index: 10000;
+      }
+
+      paper-tabs.color::shadow #selectionBar {
+          background-color: #003053;
+      }
+
+      .core-list-dart-container {
+
+      }
+
+      /*core-list-dart.listclass {
+
+          min-height: 560px;
+      }*/
+      core-list-dart.clientListClass {
+
+          height: 100px;
+          background: white;
+      }
+
+      core-list-dart.guaranteedtier {
+          height: 560px;
+      }
+
+      core-list-dart.regulartier {
+          height: 620px;
+      }
+
+      core-list-dart.accessories {
+          height: 620px;
+      }
+
+      @media screen and (max-width: 900px) {
+          core-list-dart {
+              height: 900px;
+          }
+      }
+
+      .ringcontainer {
+          height: 355px;
+          width: 150px;
+          border-bottom: 1px solid black;
+          border-right: 1px dotted black;
+          /*border-radius: 15px;*/
+          word-wrap: break-word;
+      }
+      .barcodecontainer {
+          width: 150px;
+          border: 1px solid black;
+          /*border-radius: 15px;*/
+          word-wrap: break-word;
+      }
+
+      .scrollbutton {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          margin-left: 10px;
+          margin-bottom: 10px;
+          background: #ededed;
+      }
+
+      .scrollbutton2 {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          background: #ededed;
+          border-radius: 20px;
+      }
+
+      .otherbuttons {
+        margin-top: 10px;
+      }
+
+      .ringdata {
+        font-size: small;
+      }
+
+      .ringimagethumb {
+          width: 148px;
+          margin-left: 1px;
+          word-wrap: break-word;
+      }
+
+      core-item.core-selected {
+          color: #ddc77c;
+          //text-shadow: 3px 3px 3px gray;
+          //background: #7998ac;
+          //color: #7998ac;
+      }
+
+      core-item {
+          padding-left: 10px;
+      }
+
+      core-menu.smalltopmargin {
+          margin-top: -10px;
+      }
+
+      input[type="text"].customerinfo{
+          display: block;
+          margin: 0;
+          width: 100%;
+          font-family: sans-serif;
+          font-size: 18px;
+          appearance: none;
+          box-shadow: none;
+          border-radius: 0;
+      }
+
+      input[type="text"]:focus.customerinfo{
+          outline: none;
+      }
+
+      .style-1 input[type="text"] {
+          padding: 10px;
+          border: solid 1px #dcdcdc;
+          transition: box-shadow 0.3s, border 0.3s;
+      }
+
+      .style-1 input[type="text"]:focus,
+      .style-1 input[type="text"].focus {
+          border: solid 1px #707070;
+          box-shadow: 0 0 5px 1px #969696;
+      }
+
+      .corelist {
+          height: {{height}}px;
+      }
+
+      .fieldempty {
+          border: 3px solid red;
+      }
+      .fieldokay {
+          border: transparent;
+      }
+      .swatch {
+        width: 100px;
+        height: 55px;
+      }
+
+      .custom {
+        margin: 10px;
+      }
+
+      .highlight {
+          box-shadow: 0px 0px 10px cornflowerblue;
+      }
+      #Black {
+          width: 100px;
+          height: 55px;
+          background: black;
+      }
+      #White {
+          width: 100px;
+          height: 55px;
+          background: white;
+          border: 1px solid black;
+      }
+      #scaffoldid {
+          z-index: 10000;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 500px;
+      }
+
+
+    </style>
+    <core-ajax-dart auto url="{{pathToLogin}}" handleAs="arraybuffer" on-core-response="{{loginLoaded}}"></core-ajax-dart>
+
+<!--loading-->
+      <div hidden?="{{hideCoverApp}}" style="width:100%; height: 100%; background-color: #003053; z-index: 1000; background-image: url('{{logoPath2}}')">
+          <!--<img _src="{{logoPath}}" style="width: 100%;"/>-->
+      </div>
+      <!--<paper-dialog opened="true" style="background-color: #7998ac; border: 5px solid #ddc77c; color: #ddc77c;" id="spinner">
+          &lt;!&ndash;<core-image _src="{{logoPath}}" style="width: 100px;"></core-image>&ndash;&gt;
+          <div vertical layout center-justified style="width: 100%;">
+              <h2><paper-spinner active="true" style="margin-right: 10px;"></paper-spinner>Please wait...</h2>
+          </div>
+      </paper-dialog>-->
+      <!--<paper-spinner active="true" id="spinner"></paper-spinner>-->
+      <paper-dialog opened="{{openLoading}}" autoCloseDisabled  style="background-color: #7998ac; border: 5px solid #ddc77c; color: #ddc77c;" backdrop>
+          <!--<core-image _src="{{logoPath}}" style="width: 100px;"></core-image>-->
+          <div vertical layout center-justified style="width: 100%;">
+              <h2><paper-spinner active="true" style="margin-right: 10px;"></paper-spinner>Please wait...</h2>
+          </div>
+      </paper-dialog>
+<!--login dialog-->
+    <paper-dialog id="loginwindow" opened="{{openLogIn}}" on-core-overlay-open-completed="{{coreOverlayDone}}" backdrop autoCloseDisabled style="width:50%; background-color:#7998ac; border: 5px solid #ddc77c; color: #ddc77c;">
+        <h1 style="margin-bottom: -20px; margin-top: -15px;">Log In</h1>
+        <h3 style="margin-bottom: 3px;">Please enter your access code</h3>
+      <div horizontal layout center-justified style="width:100%; margin-bottom: 20px;">
+        <!--<div style="width: 50px; height: 50px; border: 1px solid #ddc77c; border-radius: 10px; font-size: 3em; text-align: center; margin-left: 10px; margin-right: 10px; margin-bottom: -15px;">
+          {{pin1}}
+        </div>
+        <div style="width: 50px; height: 50px; border: 1px solid #ddc77c; border-radius: 10px; font-size: 3em; text-align: center; margin-left: 10px; margin-right: 10px; margin-bottom: -15px;">
+          {{pin2}}
+        </div>
+        <div style="width: 50px; height: 50px; border: 1px solid #ddc77c; border-radius: 10px; font-size: 3em; text-align: center; margin-left: 10px; margin-right: 10px; margin-bottom: -15px;">
+          {{pin3}}
+        </div>
+        <div style="width: 50px; height: 50px; border: 1px solid #ddc77c; border-radius: 10px; font-size: 3em; text-align: center; margin-left: 10px; margin-right: 10px; margin-bottom: -15px;">
+          {{pin4}}
+        </div>-->
+          <input id="pin" on-keyup="{{checkPinInput}}" style="font-size: x-large; text-align: center;" type="password" value="{{pin1}}{{pin2}}{{pin3}}{{pin4}}">
+      </div>
+      <div horizontal layout center-justified style="width: 100%; color: red;">
+        {{failedText}}
+      </div>
+      <div horizontal layout wrap center-justified style="width:100%;">
+        <button data-num="7" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>7</h1></button>
+        <button data-num="8" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>8</h1></button>
+        <button data-num="9" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>9</h1></button>
+        <button data-num="4" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>4</h1></button>
+        <button data-num="5" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>5</h1></button>
+        <button data-num="6" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>6</h1></button>
+        <button data-num="1" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>1</h1></button>
+        <button data-num="2" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>2</h1></button>
+        <button data-num="3" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>3</h1></button>
+        <button data-num="0" style="width:30%; height:95px; border-radius: 20px; margin: 1%; background: transparent; border: none; color: #ddc77c;" on-tap="{{numpadAction}}"><h1>0</h1></button>
+      </div>
+
+
+    </paper-dialog>
+
+    <!--<core-ajax-dart auto url="{{pathToRings}}" handleAs="json" on-core-response="{{dataLoaded}}"></core-ajax-dart>-->
+
+    <core-ajax-dart auto url="{{pathToRingsPhp}}" handleAs="json" on-core-response="{{phpDataLoaded}}"></core-ajax-dart>
+    <core-ajax-dart auto url="{{pathToSwatch}}" handleAs="json" on-core-response="{{swatchLoaded}}"></core-ajax-dart>
+<!--pop up paper dialogs-->
+
+    <paper-dialog id="type-sku" opened="{{showTypeSku}}" backdrop on-core-overlay-open-completed="{{typedSkuOpened}}">
+      SKU:<input type="text" id="customSku">
+      Finish:<input type="text" id="customFinish">
+      Price:<input type="text" id="customSkuPrice" on-keyup="{{handleTypedSkuKeyEvent}}">
+
+      <div style="color:red;">{{warningtext}}</div>
+      <paper-button recenteringTouch="true" on-click="{{submitTypeSku}}">Add</paper-button>
+      <paper-button recenteringTouch="true" on-click="{{closeTypeSku}}">Cancel</paper-button>
+    </paper-dialog>
+    <paper-dialog id="type-stock-balance" opened="{{showStockBalance}}" backdrop on-core-overlay-open-completed="{{stockBalanceOpened}}">
+      <p> Stock balance must be returned to Lashbrook within 10 business days of receipt of this product.</p>
+        Amount not to exceed:<input type="text" id="stockBalancePrice" on-keyup="{{handleStockBalanceKeyEvent}}">
+      <p>If stock is not returned within 10 business days of receipt of this product, invoice will be amended to full amount.</p>
+      <div style="color:red;">{{warningtext}}</div>
+      <paper-button noink recenteringTouch="true" on-click="{{submitStockBalance}}">Add</paper-button>
+      <paper-button noink recenteringTouch="true" on-click="{{closeStockBalance}}">Cancel</paper-button>
+    </paper-dialog>
+
+    <div mode="standard" id="scaffoldid" rightDrawer>
+      <core-header-panel id="headerPanel" mode="scroll" navigation flex>
+        <core-toolbar id="drawer-header" style="background-color: #003053;" horizontal layout center-justified>
+          <img _src="{{logoPath}}" style="width: 150px;"/>
+        </core-toolbar>
+          <!--button section-->
+          <div horizontal layout center-justified center class="otherbuttons">
+              <paper-button raised recenteringTouch="true" on-click="{{submitOrder}}" hidden?="{{hideSubmitButton}}">Review</paper-button>
+          </div>
+          <div horizontal layout center-justified center class="otherbuttons" hidden?="{{hideButtons}}">
+              <paper-button raised on-Click="{{cancelSubmit}}">Back</paper-button>
+              <paper-button raised on-Click="{{continueSubmit}}">Continue</paper-button>
+          </div>
+          <div horizontal layout center-justified center  class="otherbuttons" hidden?="{{hideOtherButtons}}">
+              <paper-button raised recenteringTouch="true" on-click="{{back}}">Back</paper-button>
+              <paper-button raised recenteringTouch="true" on-click="{{signatureSubmit}}">Submit and Sign Order</paper-button>
+          </div>
+          <div style="margin-top: 7px; margin-bottom: 5px;" horizontal layout center-justified>
+              <textarea class="customerinfo" rows="4" cols="30" placeholder="Notes" id="notes" on-keyup="{{handleOrderNotes}}"></textarea>
+          </div>
+          <div style="border-top: 1px solid black; padding-top: 5px;" horizontal layout around-justified>
+              <paper-button raised recenteringTouch="true" style="font-size: small;" hidden?="{{hideSaveButton}}" on-click="{{openSaveOrderDialog}}">Save Order</paper-button>
+              <paper-button raised recenteringTouch="true" on-click="{{loadFromPHP}}" style="font-size: small;" hidden?="{{hideLoadButton}}" type="button">Load Order</paper-button>
+          </div>
+
+
+          <!--<div horizontal layout center-justified center  class="otherbuttons" hidden?="{{hideCloseSignatureButton}}">
+              <paper-button raised recenteringTouch="true" on-click="{{cancelSig}}">Cancel</paper-button>
+              <paper-button raised recenteringTouch="true" on-click="{{closeSignature}}">Submit</paper-button>
+
+          </div>-->
+          <h3 horizontal layout center-justified style="font-size: medium;">Rep: {{currentUser}}</h3>
+    <div hidden?="{{hideMenus}}">
+    <div style="margin-left: 5px; font-weight: bold; font-size: larger; text-decoration: underline;">Window to Display</div>
+
+<!--main menu on the left (or right) for selecting view-->
+
+        <core-menu id="menu-id1" theme="core-light-menu" style="font-size: larger;" on-core-select="{{swapWindow}}" selected="0" data-menu="1">
+            <core-item icon="" label="Barcode Scan" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+            <core-item icon="" label="Tiers" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+        </core-menu>
+        <div style="margin-top: -15px;" hidden?="{{hideTierMenu}}">
+            <paper-dropdown-menu label="ignore">
+                <paper-dropdown class="dropdown" label="ignore">
+                    <core-menu label="ignore" id="menu-id" class="menu" on-core-select="{{swapTier}}" selected="{{tierselected}}">
+                        <paper-item label="ignore" style="color: black; font-size: large;">No Tier</paper-item>
+                        <paper-item label="ignore" style="color: black; font-size: large;">Tier 1</paper-item>
+                        <paper-item label="ignore" style="color: black; font-size: large;">Tier 2</paper-item>
+                        <paper-item label="ignore" style="color: black; font-size: large;">Tier 3</paper-item>
+                        <paper-item label="ignore" style="color: black; font-size: large;">Tier 4</paper-item>
+                        <paper-item label="ignore" style="color: black; font-size: large;">Tier 4 Guar...</paper-item>
+                    </core-menu>
+                </paper-dropdown>
+            </paper-dropdown-menu>
+            <paper-button on-click="{{tierItUp}}" label="ignore" style="font-size: small;" raised>ADD</paper-button>
+        </div>
+        <div style="margin-top: -15px;" hidden?="{{hideTierMenu}}">Category:
+            <paper-dropdown-menu>
+                <paper-dropdown class="dropdown">
+                    <core-menu class="menu" selected="{{subselected}}" on-core-select="{{swapTier}}">
+                        <paper-item style="color: black; font-size: large;">All Tier Rings</paper-item>
+                        <paper-item style="color: black; font-size: large;">Meteorite</paper-item>
+                        <paper-item style="color: black; font-size: large;">Camo</paper-item>
+                        <paper-item style="color: black; font-size: large;">Titanium</paper-item>
+                        <paper-item style="color: black; font-size: large;">Carbon Fiber</paper-item>
+                        <paper-item style="color: black; font-size: large;">Cobalt Chrome</paper-item>
+                        <paper-item style="color: black; font-size: large;">Damascus</paper-item>
+                        <paper-item style="color: black; font-size: large;">Tungsten Ceramic</paper-item>
+                        <paper-item style="color: black; font-size: large;">Zirconium</paper-item>
+                    </core-menu>
+                </paper-dropdown>
+            </paper-dropdown-menu>
+        </div>
+        <core-menu id="menu-id2" class="smalltopmargin" theme="core-light-menu" style="font-size: larger;" on-core-select="{{swapWindow}}" data-menu="2">
+          <core-item icon="" label="Accessories" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+          <core-item icon="" label="All Rings" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+        </core-menu>
+        <div style="margin-top: -15px;" hidden?="{{hideAllMenu}}">Category:
+            <paper-dropdown-menu>
+                <paper-dropdown class="dropdown">
+                    <core-menu class="menu" selected="{{othersubselected}}" on-core-select="{{swapTier}}">
+                        <paper-item style="color: black; font-size: large;">All Rings</paper-item>
+                        <paper-item style="color: black; font-size: large;">Core Collection</paper-item>
+                        <paper-item style="color: black; font-size: large;">Meteorite</paper-item>
+                        <paper-item style="color: black; font-size: large;">Camo</paper-item>
+                        <paper-item style="color: black; font-size: large;">Titanium</paper-item>
+                        <paper-item style="color: black; font-size: large;">Carbon Fiber</paper-item>
+                        <paper-item style="color: black; font-size: large;">Cobalt Chrome</paper-item>
+                        <paper-item style="color: black; font-size: large;">Damascus</paper-item>
+                        <paper-item style="color: black; font-size: large;">Tungsten Ceramic</paper-item>
+                        <paper-item style="color: black; font-size: large;">Zirconium</paper-item>
+                        <paper-item style="color: black; font-size: large;">Hard Wood</paper-item>
+                        <paper-item style="color: black; font-size: large;">Other</paper-item>
+                    </core-menu>
+                </paper-dropdown>
+            </paper-dropdown-menu>
+        </div>
+        <core-menu id="menu-id3" class="smalltopmargin" theme="core-light-menu" style="font-size: larger;" on-core-select="{{swapWindow}}" data-menu="3">
+          <core-item icon="" label="Collections" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+        </core-menu>
+        <div style="margin-top: -15px;" hidden?="{{hideCombosMenu}}">
+            <paper-dropdown-menu>
+                <paper-dropdown class="dropdown">
+                    <core-menu class="menu" selected="{{comboselected}}">
+                        <core-item value="Core Collection">Core Collection</core-item>
+                        <core-item value="Basics A">Basics A</core-item>
+                        <core-item value="Basics B">Basics B</core-item>
+                        <core-item value="Engraved Set A">Engraved Set A</core-item>
+                        <core-item value="Hardwood 10">Hardwood 10</core-item>
+                        <core-item value="Elysium">Elysium 8</core-item>
+                        <core-item value="Elysium2">Elysium 5</core-item>
+                    </core-menu>
+                </paper-dropdown>
+            </paper-dropdown-menu>
+            <paper-button raised recenteringTouch="true" on-click="{{addCombo}}" style="font-size: small;">Add/Remove</paper-button>
+        </div>
+        <core-menu id="menu-id4" class="smalltopmargin" theme="core-light-menu" style="font-size: larger;" on-core-select="{{swapWindow}}" data-menu="4">
+          <core-item icon="" label="Search" style="font-size: larger; padding-bottom: 5px; border-bottom: 1px lightblue dotted;"></core-item>
+        </core-menu>
+        <div style="cursor: pointer; font-size: larger; padding-bottom: 10px; margin-top: 10px; border-bottom: 1px lightblue dotted;" on-click="{{typeInASku}}">Type in a custom SKU</div>
+        <br>
+        <div style="cursor: pointer; font-size: larger; padding-bottom: 10px; border-bottom: 1px lightblue dotted;" on-click="{{stockBalance}}">Stock Balance</div>
+        <br>
+        <br>
+    </div>
+
+<!--order info below menu-->
+        <div hidden?="{{finalHidden}}">
+          <div style="border-top: 1px solid black; margin-top: 10px;">
+              <h2>Current Order:</h2>
+              <h3>{{contentLabel}}</h3>
+              <h3>{{contentLabel2}}</h3>
+              <!--<h3>Current Cost:</h3>
+              <p>${{tierCost}}</p>-->
+              <h3>Subtotal: ${{subTotalCost}}</h3>
+              <div hidden?="{{hideRingsInOrder}}">
+                  <h3>The rings in this order from the Tier are:</h3>
+                  <!--<h4>Extra Rings:</h4>-->
+                  <ul style="list-style-type: none; padding: 3px;">
+                    <template repeat="{{added in finalAdded}}">
+                      <li><core-icon icon="clear" on-click="{{clearRing}}" data-sku='{{added["SKU"]}}' data-finish='{{added["finish"]}}'></core-icon>{{added["SKU"]}} - {{added["finish"]}} - ${{added["price"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+              <div hidden?="{{hideRemovedItems}}">
+                  <h4>Items removed from tier:</h4>
+                  <ul style="list-style-type: none; padding: 3px;">
+                      <template repeat="{{removed in finalRemoved}}">
+                          <li><core-icon icon="check"></core-icon>{{removed["SKU"]}} - {{removed["finish"]}} - ${{removed["price"]}}</li>
+                      </template>
+                  </ul>
+              </div>
+              <div hidden?="{{hideOtherRingsInOrder}}">
+                  <h3>The following Rings are added to this order:</h3>
+                  <!--<h4>Extra Rings:</h4>-->
+                  <ul style="list-style-type: none; padding: 3px;">
+                    <template repeat="{{added in finalAddedPlus}}">
+                      <li><core-icon icon="clear" on-click="{{clearRing}}" data-sku='{{added["SKU"]}}' data-finish='{{added["finish"]}}'></core-icon>{{added["SKU"]}} - {{added["finish"]}} - ${{added["price"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+
+              <div hidden?="{{hideOtherItemsInOrder}}">
+                  <h4>Other items in the order:</h4>
+                  <ul>
+                    <template repeat="{{addeditem in finalAddedItem}}">
+                      <li>{{addeditem["SKU"]}} - {{addeditem["finish"]}} - ${{addeditem["price"]}}</li>
+                    </template>
+                  </ul>
+                  <p>${{otherItemsCost}}</p>
+              </div>
+              <div hidden?="{{hideCustomSkus}}">
+                  <h4>Custom SKUs</h4>
+                  <ul>
+                    <template repeat="{{typedSku in typedSkus}}">
+                      <li><core-icon icon="clear" data-sku='{{typedSku["sku"]}}' data-finish="{{typedSku['finish']}}" on-click="{{removeTypedSku}}"></core-icon>{{typedSku["sku"]}} - {{typedSku['finish']}} - ${{typedSku["price"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+              <div hidden?="{{hideStockBalances}}">
+                  <h4>Stock Balance</h4>
+                  <ul>
+                    <template repeat="{{stockBalance in stockBalances}}">
+                      <li><core-icon icon="clear" data-id='{{stockBalance["id"]}}' on-click="{{removeStockBalance}}"></core-icon>{{stockBalance["id"]}}. ${{stockBalance["price"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+              <div hidden?="{{hideCustomDisplay}}">
+                  <h4>Custom Display Colors</h4>
+                  <ul>
+                    <li>Acrylic Top: {{acrylic}}</li>
+                    <li>Top Color: {{topSwatch}}</li>
+                    <li>Side Color: {{sideSwatch}}</li>
+                  </ul>
+                  <paper-button on-click="{{changeCustomDisplay}}">Change Colors</paper-button>
+
+              </div>
+
+            </div>
+
+        </div>
+        <div hidden?="{{!finalHidden}}">
+            <div style="color: red; margin-bottom: 10px;"><core-icon icon="arrow-back"></core-icon> DON'T FORGET TO SIGN. ORDERS WITHOUT SIGNATURES ARE INCOMPLETE.</div>
+            <paper-button raised><a style="text-decoration: none; color: darkgray;" href="http://www.lashbrookdesigns.com/sales">Tap here to place another order</a></paper-button>
+            <paper-button raised><a style="text-decoration: none; color: darkgray;" href="http://www.lashbrookdesigns.com/orders">Tap here to go to the orders app</a></paper-button>
+            <paper-button raised style="color: darkgray;" on-click="{{emailManually}}">Tap here to email a copy of the order for Signature</paper-button>
+
+        </div>
+      </core-header-panel>
+
+<!--top header-->
+      <div tool flex><!--{{header}}-->
+      </div>
+</div>
+<div>
+<div>
+<!--content of main window-->
+      <core-pages id="itemspages" selected="{{selected}}">
+
+<!--page 0 - main tiers window-->
+        <section id="section1" class="content" fit>
+            <core-pages id="rings1" selected="{{subselected}}">
+                <section id="all">
+                    <core-pages id="rings1subpages" selected="{{tierselected}}">
+                        <section id="notier">
+                            <h2>You have selected No Tier.</h2>
+                            <h3>Add <i>No Tier</i> to remove the tier rings from the order.</h3>
+                        </section>
+                        <section id="tier1">
+                            <div class="box-container" hidden?="{{hideRings}}">
+                                <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                                <core-list-dart runwayFactor=1 id="tierone" class="corelist" data="{{tierOne}}" grid="true" width="150">
+                                    <template>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer" draggable="true">
+                                            <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                            <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                                <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                            </core-selector>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                            <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                        </div>
+                                    </template>
+                                </core-list-dart>
+                            </div>
+                        </section>
+                        <section id="tier2">
+                            <div class="box-container" hidden?="{{hideRings}}">
+                                <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                                <core-list-dart runwayFactor=1 id="tiertwo" class="corelist" data="{{tierTwo}}" grid="true" width="150">
+                                    <template>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                            <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                            <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                                <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                            </core-selector>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                            <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                        </div>
+                                    </template>
+                                </core-list-dart>
+                            </div>
+                        </section>
+                        <section id="tier3">
+                            <div class="box-container" hidden?="{{hideRings}}">
+                                <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                                <core-list-dart runwayFactor=1 id="tierthree" class="corelist" data="{{tierThree}}" grid="true" width="150">
+                                    <template>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                            <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                            <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                                <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                            </core-selector>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                            <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                        </div>
+                                    </template>
+                                </core-list-dart>
+                            </div>
+                        </section>
+                        <section id="tier4">
+                            <div class="box-container" hidden?="{{hideRings}}">
+                                <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                                <core-list-dart runwayFactor=1 id="tierfour" class="corelist" data="{{tierFour}}" grid="true" width="150">
+                                    <template>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                            <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                            <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                                <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                            </core-selector>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                            <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                        </div>
+                                    </template>
+                                </core-list-dart>
+                            </div>
+                        </section>
+                        <section id="tierGuaranteed">
+                            <div class="box-container" hidden?="{{hideRings}}">
+                                <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                                <core-list-dart runwayFactor=1 id="tierfourg" class="corelist" data="{{tierFour}}" grid="true" width="150">
+                                    <template>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                            <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                            <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                                <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                            </core-selector>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                            <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                            <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                        </div>
+                                    </template>
+                                </core-list-dart>
+                            </div>
+                        </section>
+
+
+                    </core-pages>
+
+                    <!--<div class="box-container" hidden?="{{hideRings}}">
+                    <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+
+                        <core-list-dart runwayFactor=1 id="list1" class="corelist" data="{{currentTier}}" grid="true" width="150">
+                            <template>
+
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                    <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                    <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                        <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                    </core-selector>
+
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+
+                                </div>
+                            </template>
+
+                        </core-list-dart>
+
+                    </div>-->
+
+
+                </section>
+                <section id="metorite">
+                    <div class="box-container" id="meteorite-container" hidden?="{{hideRings}}">
+                      <div hidden?="{{hideguarantee}}" style="cursor: pointer;" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style=" border-radius: 7px; background-color: #7998ac; color: #ddc77c; padding-left: 7px; padding-right: 7px; padding-bottom: 5px; padding-top: 3px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                            <core-list-dart runwayFactor=1 id="meteoritelist" class="corelist" data="{{meteoriteList}}" grid="true" width="150">
+                                <template>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                        <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                        <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                            <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                        </core-selector>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                        <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                        <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                    </div>
+                                </template>
+                            </core-list-dart>
+                    </div>
+                </section>
+                <section id="camo">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="camolist" class="corelist" data="{{camoList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="titanium">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="titaniumlist" class="corelist" data="{{titaniumList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="carbonfiber">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="carbonfiberlist" class="corelist" data="{{carbonfiberList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="cobaltchrome">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="cobaltchromelist" class="corelist" data="{{cobaltchromeList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="damascus">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="damascuslist" class="corelist" data="{{damascusList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="tungstenceramic">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="tungstenceramiclist" class="corelist" data="{{tungstenceramicList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="zirconium">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="zirconiumlist" class="corelist" data="{{zirconiumList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+            </core-pages>
+        </section>
+
+<!--page 1 accessories window-->
+        <section id="section2" class="content" fit>
+            <div class="box-container" hidden?="{{hideRings}}">
+                <core-list-dart runwayFactor=1 id="accessories" class="corelist" data="{{accessories}}" grid="true" width="150">
+                <template>
+                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                        <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                        <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                            <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                        </core-selector>
+                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                        <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                        <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                        <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                    </div>
+                </template>
+            </core-list-dart>
+            </div>
+        </section>
+
+<!--page 2 other rings window-->
+        <section id="section3" class="content" fit>
+            <core-pages id="otherrings" selected="{{othersubselected}}">
+                <section id="otherall">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <paper-button on-click="{{sortByCollection}}" data-collection="all">Sort by Collection</paper-button>
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <core-list-dart runwayFactor=1 id="otherringsall" class="corelist" data="{{otherRingsAll}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="corecollection">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="corecollection">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="corecollectionlist" class="corelist" data="{{corecollectionList}}" grid="true" width="150">
+                            <template>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                    <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                    <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                        <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                    </core-selector>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                    <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                </div>
+                            </template>
+                        </core-list-dart>
+                    </div>
+                </section>
+                <section id="othermetorite">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="meteorite">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othermeteoritelist" class="corelist" data="{{othermeteoriteList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="othercamo">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="camo">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othercamolist" class="corelist" data="{{othercamoList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="othertitanium">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="titanium">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othertitaniumlist" class="corelist" data="{{othertitaniumList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="othercarbonfiber">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="carbonfiber">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othercarbonfiberlist" class="corelist" data="{{othercarbonfiberList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="othercobaltchrome">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="cobaltchrome">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othercobaltchromelist" class="corelist" data="{{othercobaltchromeList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="otherdamascus">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="damascus">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="otherdamascuslist" class="corelist" data="{{otherdamascusList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="othertungstenceramic">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="tungstenceramic">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="othertungstenceramiclist" class="corelist" data="{{othertungstenceramicList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="otherzirconium">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="zirconium">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="otherzirconiumlist" class="corelist" data="{{otherzirconiumList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="otherhardwood">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="hardwood">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="otherhardwoodlist" class="corelist" data="{{otherhardwoodList}}" grid="true" width="150">
+                        <template>
+                            <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                    <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                </core-selector>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                            </div>
+                        </template>
+                    </core-list-dart>
+                    </div>
+                </section>
+                <section id="otherother">
+                    <div class="box-container" hidden?="{{hideRings}}">
+                        <div hidden?="{{hideguarantee}}" horizontal layout center-justified><h3>An order of this tier level comes with a guarantee. <a style="border:1px black solid; padding-left: 4px; padding-right: 4px; padding-bottom: 2px; background: #D0D0D0; 4px; border-radius: 7px;" on-click="{{showGuarantee}}">Tap here</a>&nbsp;for details.</h3></div>
+                        <paper-button on-click="{{sortByCollection}}" data-collection="other">Sort by Collection</paper-button>
+                        <core-list-dart runwayFactor=1 id="otherotherlist" class="corelist" data="{{otherotherList}}" grid="true" width="150">
+                            <template>
+                                <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                    <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                    <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                        <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                    </core-selector>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}} (tier{{model.tier}}-id{{model.id}})</div>
+                                    <div index="{{index}}" class="{{ {'strike': model.cleared} }}">{{model.combo}} {{model.combo2}}</div>
+                                    <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{model.notes}}" on-keyup="{{handleNotes}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+                                </div>
+                            </template>
+                        </core-list-dart>
+                    </div>
+                </section>
+            </core-pages>
+        </section>
+
+
+<!--page 3 submit order window-->
+          <section id="submit-order">
+
+            <div id="submit-order-text">
+              <h2>You are finalizing an order for a <span style="color:green;">{{contentLabel}}</span> order</h2>
+                <div hidden?="{{hideguaranteedinreview}}">
+                    <h2>Guaranteed Sale Program</h2>
+                    <p><b>Offer:</b>
+                    <p>1. If a store purchases a Tier 4 and The Knot, Lashbrook will guarantee at least a one-time turn of the investment during the first year that they have the product in the case.  If the store fails to sell $15,000, at wholesale, from the case and/or in special orders, Lashbrook will buy back product in an amount equal to the shortfall.
+                        <br>2. Total Investment:   $14,997
+                        <br>3. 30/60/90 (Three payments of $4999)
+                        <br>4. No substitutions to the Tier 4.
+                        <br>5. No stock balancing, unless initiated by Lashbrook, during the first year.</p>
+
+                    <p><b>The following requirements must be met in order to qualify for buyback:</b>
+                        <br>1. Payment terms must be met within a 10 day grace period.
+                        <br>2. Store personnel must do Lashbrook training within 30 days of receipt of merchandise.
+                        <br>3. Store must provide the information necessary for proper Knot promotion within ten business days of each request.
+                        <br>4. Product must be properly displayed.
+                        <br>5. Store will have 60 days from end of 12 month period to notify us that they want a buyback.</p>
+
+                    <p><b>Lashbrook buyback commitment:</b>
+                        <br>1. If conditions are met, Lashbrook will buy back the Lashbrook product that the jeweler chooses, also with 30/60/90 terms.  For example, if a jeweler sells only $9,000 at wholesale during the first year, he may choose $6000 of product to sell back and Lashbrook will pay $2000/month for three months.</p>
+                    <paper-checkbox id="guaranteecheck" label="I have read and agree to the terms and conditions."></paper-checkbox>
+                    <br><br>
+                </div>
+              <h2>With the following items:</h2>
+              <div hidden?="{{hideRingsInOrder}}">
+                  <h3>Rings in the Tier:</h3>
+                  <ul>
+                    <template repeat="{{added in finalAdded}}">
+                      <li>{{added['SKU']}} - {{added['finish']}} - ${{added['price']}} - {{added['notes']}}</li>
+                    </template>
+                  </ul>
+              </div>
+              <div hidden?="{{hideRemovedItems}}">
+                  <p>The following rings have been removed from the chosen tier:</p>
+                  <ul>
+                    <template repeat="{{removed in finalRemoved}}">
+                      <li>{{removed["SKU"]}} - {{removed["finish"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+
+                <div hidden?="{{hideOtherRingsInOrder}}">
+                    <h3>Added Rings:</h3>
+                    <ul>
+                        <template repeat="{{added in finalAddedPlus}}">
+                            <li>{{added["SKU"]}} - {{added["finish"]}} - ${{added["price"]}} - {{added["notes"]}}</li>
+                        </template>
+                    </ul>
+                </div>
+              <div hidden?="{{hideOtherItemsInOrder}}">
+                  <h3>Other Items:</h3>
+                  <ul>
+                    <template repeat="{{addeditem in finalAddedItem}}">
+                      <li>{{addeditem["SKU"]}} - {{addeditem["finish"]}} - ${{addeditem["price"]}} - {{addeditem["notes"]}}</li>
+                    </template>
+                  </ul>
+                  <div hidden?="{{hideCustomDisplay}}">
+                      <h4>Custom Display Colors</h4>
+                      <ul>
+                          <li>Acrylic Top: {{acrylic}}</li>
+                          <li>Top Color: {{topSwatch}}</li>
+                          <li>Side Color: {{sideSwatch}}</li>
+                      </ul>
+
+
+                  </div>
+              </div>
+              <div hidden?="{{hideCustomSkus}}">
+                  <h3>Custom Items:</h3>
+                  <ul>
+                    <template repeat="{{typedSku in typedSkus}}">
+                      <li>{{typedSku["sku"]}} - {{typedSku["finish"]}} - ${{typedSku["price"]}}</li>
+                    </template>
+                  </ul>
+              </div>
+            <div hidden?="{{hideStockBalance}}">
+              <h4>Stock Balance</h4>
+              <p>Stock balance must be returned to Lashbrook within 10 business days.</p>
+              <ul>
+                <template repeat="{{stockBalance in stockBalances}}">
+                  <li>{{stockBalance["id"]}}. ${{stockBalance["price"]}}</li>
+                </template>
+              </ul>
+              <p>If stock is not returned within 10 business days, invoice will be amended to full amount.</p>
+            </div>
+            <h2>Subtotal: ${{subTotalCost}}</h2>
+          </div>
+
+
+
+            <div style="width: 100%;" hidden?="{{hideRingsInOrder}}" horizontal layout center-justified>Tier Rings</div>
+            <div class="container" horizontal layout wrap around-justified>
+                <template repeat="{{orderOtherRing in orderOtherRings}}">
+                    <div class="ringinfo">
+                       <img class="thumb" _src="{{imagePath}}{{orderOtherRing.image}}"/>
+                        <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                            <core-item icon="{{orderOtherRing.icon}}" data-sku="{{orderOtherRing.SKU}}" data-finish="{{orderOtherRing.finish}}" class="{{ {'strike': orderOtherRing.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{orderOtherRing.added}}</core-item>
+                        </core-selector>
+                        <div>
+                            <div style="cursor: default;">Category: {{orderOtherRing.category}}</div>
+                            <div style="cursor: default;">SKU: {{orderOtherRing.SKU}}</div>
+                            <div style="cursor: default;">Finish: {{orderOtherRing.finish}}</div>
+                            <div style="cursor: default;">Price ${{orderOtherRing.price}}</div>
+                            <div style="cursor: default;">Tier {{orderOtherRing.tier}} - ID {{orderOtherRing.id}}</div>
+                            <div horizontal layout center-justified><input type="text" value="{{orderOtherRing.notes}}" on-keyup="{{handleNotes}}" data-sku="{{orderOtherRing.SKU}}" data-finish="{{orderOtherRing.finish}}" placeholder="notes..." style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+              <div style="width: 100%;" hidden?="{{hideOtherRingsInOrder}}" horizontal layout center-justified>Other Rings</div>
+              <div class="container" horizontal layout wrap around-justified>
+                <template repeat="{{orderOtherRing in orderOtherRingsPlus}}">
+                    <div class="ringinfo">
+                       <img class="thumb" _src="{{imagePath}}{{orderOtherRing.image}}"/>
+                        <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                            <core-item icon="{{orderOtherRing.icon}}" data-sku="{{orderOtherRing.SKU}}" data-finish="{{orderOtherRing.finish}}" class="{{ {'strike': orderOtherRing.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{orderOtherRing.added}}</core-item>
+                        </core-selector>
+                        <div>
+                            <div style="cursor: default;">Category: {{orderOtherRing.category}}</div>
+                            <div style="cursor: default;">SKU: {{orderOtherRing.SKU}}</div>
+                            <div style="cursor: default;">Finish: {{orderOtherRing.finish}}</div>
+                            <div style="cursor: default;">Price ${{orderOtherRing.price}}</div>
+                            <div style="cursor: default;">Tier {{orderOtherRing.tier}} - ID {{orderOtherRing.id}}</div>
+                            <div horizontal layout center-justified><input type="text" value="{{orderOtherRing.notes}}" on-keyup="{{handleNotes}}" data-sku="{{orderOtherRing.SKU}}" data-finish="{{orderOtherRing.finish}}" placeholder="notes..." style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div style="width: 100%;" hidden?="{{hideOtherItemsInOrder}}" horizontal layout center-justified>Accessories</div>
+            <div class="container" horizontal layout wrap around-justified>
+              <template repeat="{{orderAccessory in orderAccessories}}">
+                  <div class="ringinfo">
+                    <img class="thumb" _src="{{imagePath}}{{orderAccessory.image}}"/>
+                      <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                          <core-item icon="{{orderAccessory.icon}}" data-sku="{{orderAccessory.SKU}}" data-finish="{{orderAccessory.finish}}" class="{{ {'strike': orderAccessory.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{orderAccessory.added}}</core-item>
+                      </core-selector>
+                    <div>
+                      <div style="cursor: default;">Category: {{orderAccessory.category}}</div>
+                      <div style="cursor: default;">SKU: {{orderAccessory.SKU}}</div>
+                      <div style="cursor: default;">Finish: {{orderAccessory.finish}}</div>
+                      <div style="cursor: default;">Price ${{orderAccessory.price}}</div>
+                      <div style="cursor: default;">Tier {{orderAccessory.tier}}</div>
+                      <div horizontal layout center-justified><input type="text" value="{{orderAccessory.notes}}" placeholder="notes..." on-keyup="{{handleNotes}}" data-sku="{{orderAccessory.SKU}}" data-finish="{{orderAccessory.finish}}" style="width: 80%;"></div>
+                    </div>
+                  </div>
+              </template>
+            </div>
+          </section>
+
+<!--page 4 finalize orders-->
+          <section id="finalize-order-existing">
+              <core-toolbar>
+                <paper-tabs scrollable noink="true" class="bottom fit color" selected="{{partnerSelected}}" on-core-select="{{changePartner}}">
+                    <paper-tab><h2>New Partner</h2></paper-tab>
+                    <paper-tab><h2>Existing Partner</h2></paper-tab>
+                </paper-tabs>
+              </core-toolbar>
+              <core-pages id="partners" selected="{{partnerSelected}}">
+                  <section id="newPartner">
+                      <!--<img _scr="{{logoPath}}"/>-->
+                      <div  horizontal layout center-justified>
+                          <div vertical layout style="width: 80%;">
+                              <form vertical layout>
+
+
+                                  <ul class="input-list style-1 clearfix" style="list-style-type: none; padding-left:0;">
+                                      <li class="{{dateNewCss}}">
+                                          <label for="date">Date*</label><input class="customerinfo" id="dateNew" is="core-input" value="{{date}}" type="date">
+                                      </li>
+                                      <li class="{{storeNameNewCss}}">
+                                          <input class="customerinfo" id="storeNameNew" type="text" placeholder="Store Name*">
+                                      </li>
+                                      <li class="{{lastNameNewCss}}">
+                                          <input class="customerinfo" id="lastNameNew" placeholder="Last Name*" type="text">
+                                      </li>
+                                      <li class="{{firstNameNewCss}}">
+                                          <input class="customerinfo" id="firstNameNew" placeholder="First Name*" type="text">
+                                      </li>
+                                      <li class="{{addressNewCss}}">
+                                          <input class="customerinfo" id="addressNew" type="text" placeholder="Address*">
+                                      </li>
+                                      <li class="{{cityNewCss}}">
+                                          <input class="customerinfo" id="cityNew" type="text" placeholder="City*">
+                                      </li>
+                                      <li class="{{stateNewCss}}">
+                                          <input class="customerinfo" id="stateNew" type="text" placeholder="State*">
+                                      </li>
+                                      <li class="{{zipNewCss}}">
+                                          <input class="customerinfo" id="zipNew" type="text" placeholder="Zip*">
+                                      </li>
+                                      <li class="{{phoneNewCss}}">
+                                          <input class="customerinfo" id="phoneNew" type="text" placeholder="Phone*">
+                                      </li>
+                                      <li class="{{emailNewCss}}">
+                                          <input class="customerinfo" id="emailNew" type="text" placeholder="Email*">
+                                      </li>
+                                      <li class="{{emailNewCss}}">
+                                          <input class="customerinfo" id="confirmEmailNew" type="text" placeholder="Confirm Email*">
+                                      </li>
+                                      <li class="{{termsNewCss}}">
+                                          <input class="customerinfo" id="termsNew" type="text" placeholder="Terms*">
+                                      </li>
+
+                                  </ul>
+
+                              </form>
+                              <br>
+                              <h3>Your shipping costs are ${{shippingCosts}}.</h3>
+                              <br>
+                              <h2>Order Total: ${{totalPlusShipping}}</h2>
+                          </div>
+                      </div>
+                      <div>* required</div>
+                  </section>
+                  <section id="existingPartner">
+                      <!--<img _scr="{{logoPath}}"/>-->
+                      <div  horizontal layout center-justified>
+                          <div vertical layout style="width: 80%;">
+                              <form vertical layout>
+                                  <ul class="input-list style-1 clearfix" style="list-style-type: none; padding-left:0;">
+                                      <li class="{{dateCss}}">
+                                          <label for="date">Date*</label><input is="core-input" id="date" value="{{date}}" type="date">
+                                      </li>
+                                  </ul>
+                                  <span><paper-input label="Find Store Name:" floatingLabel="true" id="storeName" on-keyup="{{handleKeyEvent}}" type="text" style="background-color: white; border-radius: 10px; margin-bottom:5px;"></paper-input><paper-button on-click="{{searchNames}}"><core-icon icon="search"></core-icon>Search</paper-button><!--<paper-button on-click="{{autoFillPartner}}">Apply</paper-button>--></span>
+                                  <core-list-dart runwayFactor=4 id="clientResults" data="{{clientList}}" selectionEnabled="true" on-core-activate="{{autoFillPartner}}" class="clientListClass {{storeNameCss}}">
+                                      <template>
+                                          <core-item data-store="{{model.store_name}}" index="{{index}}" class="{{ {'selectclient': model.selected} }}">{{model.store_name}}</core-item>
+                                      </template>
+                                  </core-list-dart>
+                                  <p hidden?="{{hideStoreNameWarning}}" style="color: red;">You must select a Store. If you cannot find a matching existing store, please use the New Partner tab.</p>
+                                  <ul hidden?="{{hideExistingCustomer}}" class="input-list style-1 clearfix" style="list-style-type: none; padding-left:0;">
+                                    <li class="{{lastNameCss}}">
+                                        <input class="customerinfo" id="lastName" placeholder="Last Name*" type="text" value="{{currentPartner[0].last_name}}">
+                                    </li>
+                                    <li class="{{firstNameCss}}">
+                                        <input class="customerinfo" id="firstName" placeholder="First Name*" type="text" value="{{currentPartner[0].first_name}}">
+                                    </li>
+                                      <li class="{{addressCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Address*" id="address" value="{{currentPartner[0].address}}">
+                                      </li>
+                                      <li class="{{cityCss}}">
+                                          <input class="customerinfo" type="text" placeholder="City*" id="city" value="{{currentPartner[0].city}}">
+                                      </li>
+                                      <li class="{{stateCss}}">
+                                          <input class="customerinfo" type="text" placeholder="State*" id="state" value="{{currentPartner[0].state}}">
+                                      </li>
+                                      <li class="{{zipCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Zip*" id="zip" value="{{currentPartner[0].zip}}">
+                                      </li>
+                                      <li class="{{phoneCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Phone*" id="phone" value="{{currentPartner[0].phone}}">
+                                      </li>
+                                      <li class="{{emailCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Email*" id="email" value="{{currentPartner[0].email}}">
+                                      </li>
+                                      <li class="{{emailCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Confirm Email*" id="confirmEmail" value="{{currentPartner[0].email}}">
+                                      </li>
+                                      <li class="{{termsCss}}">
+                                          <input class="customerinfo" type="text" placeholder="Terms*" id="terms">
+                                      </li>
+
+                                  </ul>
+                              </form>
+                              <br>
+                              <h3>Your shipping costs are ${{shippingCosts}}.</h3>
+                              <br>
+                              <h2>Order Total: ${{totalPlusShipping}}</h2>
+                          </div>
+                      </div>
+                      <div>* required</div>
+                  </section>
+
+              </core-pages>
+          </section>
+
+<!--page 5 finalize order for new customers  -->
+      <section id="notused">
+      </section>
+
+<!--page 6 signature-->
+        <section id="signature" hidden?="{{hideSignature}}">
+          <div vertical layout>
+            <div horizontal layout center-justified>
+              <!--<iframe id="iframe" width="75%" height="500px" src="../../../web/signature/signature.html" seamless="true"></iframe>-->
+              <iframe id="iframe" width="100%" height="{{height}}" _src="../../../web/signature/sign.php?id={{orderID}}" seamless="true"></iframe>
+            </div>
+            <!--<div hidden?="{{hideSignatureRequired}}" style="color:red; margin-left: 180px; margin-top: 10px;">You must upload the signature before continuing or it will not be attached to the order e-mail.</div>-->
+          </div>
+        </section>
+
+<!--page 7 thank you window    -->
+      <section id="order-complete">
+        <h1>Thank you!</h1>
+        <p>Your order has been placed.</p>
+        <p>An email copy has been sent.</p>
+        <paper-button noink recenteringTouch="true" type="button"><a _href="{{pathToIndex}}">Place a new order</a></paper-button>
+        <paper-button noink recenteringTouch="true" type="button"><a _href="{{pathToPhp}}/orderbackup/{{lastName}}.html">Tap here to view the order online</a></paper-button>
+      </section>
+
+<!--page 8 barcode scan window-->
+      <section id="barcode">
+          <div horizontal layout center-justified style="margin-top: 10px; font-size: x-large;">
+              Scan barcode now: <input id="barcodeinput" on-change="{{searchForBarcode}}" type="text" style="font-size: x-large;">
+              {{barcodedata}}
+
+          </div>
+          <div horizontal layout center-justified style="font-size: x-small;">Note: Cursor must be in the text field.</div>
+          <!--<div class="barcode-container" hidden?="{{hideRings}}" horizontal layout center style="width: 100%;">-->
+              <!--<core-list-dart runwayFactor=1 id="barcodeRings" class="corelist" data="{{barcodeRings}}" grid="false">-->
+                  <!--<template>-->
+          <div horizontal layout center-justified style="margin-top: 50px;" hidden?="{{hidebarcodeRing}}">
+
+              <div index="{{index}}" class="{{ {'strike': barcodeRing.cleared} }} barcodecontainer">
+                  <h2 style="text-align: center;">{{barcodenote}}</h2>
+                  <img _src="../../../web/images/rings/thumbnails/{{barcodeRing.image}}" class="{{ {'strike': barcodeRing.cleared} }} ringimagethumb" data-sku="{{barcodeRing.SKU}}" data-finish="{{barcodeRing.finish}}" on-click="{{zoomRing}}"/>
+                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                      <core-item icon="{{barcodeRing.icon}}" data-sku="{{barcodeRing.SKU}}" data-finish="{{barcodeRing.finish}}" class="{{ {'strike': barcodeRing.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{barcodeRing.added}}</core-item>
+                  </core-selector>
+                  <div class="{{ {'strike': barcodeRing.cleared} }} ringdata">Category: {{barcodeRing.category}}</div>
+                  <div class="{{ {'strike': barcodeRing.cleared} }} ringdata">SKU: {{barcodeRing.SKU}}</div>
+                  <div class="{{ {'strike': barcodeRing.cleared} }} ringdata">Finish: {{barcodeRing.finish}}</div>
+                  <div class="{{ {'strike': barcodeRing.cleared} }} ringdata">${{barcodeRing.price}}</div>
+                  <div class="{{ {'strike': barcodeRing.cleared} }} ringdata">(tier{{barcodeRing.tier}}-id{{barcodeRing.id}})</div>
+                  <div index="{{index}}" horizontal layout center-justified><input type="text" value="{{barcodeRing.notes}}" on-keyup="{{handleNotes}}" data-sku="{{barcodeRing.SKU}}" data-finish="{{barcodeRing.finish}}" placeholder="notes..." style="width: 80%;"></div>
+
+
+              </div>
+          </div>
+          <h2 horizontal layout center-justified style="margin-top: 50px;" hidden?="{{hidecombomessage}}">{{thecombo}}</h2>
+          <h2 horizontal layout center-justified style="margin-top: 50px;" hidden?="{{hidecombomessage}}">COMBO ADDED</h2>
+          <h2 horizontal layout center-justified style="margin-top: 50px;" hidden?="{{hideNoBarcodeFound}}">NO RING FOUND WITH THAT BARCODE</h2>
+                  <!--</template>-->
+              <!--</core-list-dart>-->
+          <!--</div>-->
+      </section>
+<!--page 9 load orders-->
+      <section id="loadorders">
+          <h2>Please select the order you would like to load from the dropdown menu.</h2>
+          <paper-dropdown-menu label="Order Names" style="width: 700px;" vertical layout start-justified>
+              <paper-dropdown class="dropdown">
+                  <core-menu class="menu" valueattr="label" id="loadOrderID" style="width: 650px;">
+                      <template repeat="{{orderName in orderNames}}">
+                          <paper-item label="{{orderName['id']}}"><h3>{{orderName['id']}}-{{orderName['name']}}</h3></paper-item>
+                      </template>
+                  </core-menu>
+              </paper-dropdown>
+          </paper-dropdown-menu>
+          <br>
+          <paper-button noink recenteringTouch="true" type="button" on-click="{{getOrderIdx}}">Load</paper-button>
+          <paper-button noink recenteringTouch="true" type="button" on-click="{{closeSelectOrderDialog}}">Cancel</paper-button>
+      </section>
+<!--page 10 combos-->
+      <section id="combos">
+          <core-pages id="combospages" selected="{{comboselected}}">
+              <section id="core_collection">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <paper-button on-click="{{swapCoreCombo}}" raised>Toggle Single/Full Collection View</paper-button>
+                      <core-list-dart runwayFactor=1 id="core_collection" class="corelist" data="{{core_collection}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="basic_a">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="basics_a" class="corelist" data="{{basics_a}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="basic_b">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="basics_b" class="corelist" data="{{basics_b}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="engrave_set_a">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="engraved_set_a" class="corelist" data="{{engraved_set_a}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="hardwoods_10">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="hardwood_10" class="corelist" data="{{hardwood_10}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="elysiums">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="elysium_8" class="corelist" data="{{elysium_8}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+              <section id="elysiums2">
+                  <div class="box-container" hidden?="{{hideRings}}">
+                      <core-list-dart runwayFactor=1 id="elysium_5" class="corelist" data="{{elysium_5}}" grid="true" width="150">
+                          <template>
+                              <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                                  <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                                  <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                                      <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                                  </core-selector>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                                  <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+                              </div>
+                          </template>
+                      </core-list-dart>
+                  </div>
+              </section>
+          </core-pages>
+      </section>
+<!--Search page 11-->
+      <section>
+          <div style="margin-left: 20px;">
+            <span style="font-size: small;">Search: <input id="filter" type="text" value="{{search}}" on-keyup="{{handleSearch}}"><core-icon icon="clear" on-click="{{clearSearch}}"></core-icon><paper-button  on-click="{{filter}}" raised><core-icon icon="search"></core-icon></paper-button></span>
+          </div>
+          <div hidden?="{{hideNotFound}}">The search returned no results.</div>
+          <div class="box-container" hidden?="{{hideRings}}">
+              <core-list-dart runwayFactor=1 id="searchlist" class="corelist" data="{{searchList}}" grid="true" width="150">
+                  <template>
+                      <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringcontainer">
+                          <img _src="../../../web/images/rings/thumbnails/{{model.image}}" class="{{ {'strike': model.cleared} }} ringimagethumb" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" on-click="{{zoomRing}}"/>
+                          <core-selector theme="core-light-theme" on-core-select="{{removeRing}}" multi >
+                              <core-item icon="{{model.icon}}" data-sku="{{model.SKU}}" data-finish="{{model.finish}}" class="{{ {'strike': model.cleared} }} ringdata" style="font-size: large; margin-left: 10px; margin-right: 10px; border: 1px solid gray;">{{model.added}}</core-item>
+                          </core-selector>
+                          <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Category: {{model.category}}</div>
+                          <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">SKU: {{model.SKU}}</div>
+                          <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">Finish: {{model.finish}}</div>
+                          <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">${{model.price}}</div>
+                          <div index="{{index}}" class="{{ {'strike': model.cleared} }} ringdata">(tier{{model.tier}}-id{{model.id}})</div>
+
+                      </div>
+                  </template>
+              </core-list-dart>
+          </div>
+      </section>
+<!--Page 12 custom colors-->
+      <section>
+          <div horizontal layout flex>
+              <div style="width: 400px; height:{{height}};">
+
+
+
+                      <img style="z-index: 10; position: absolute; top: 0; margin-left: auto; margin-right: auto;" _src="{{pathToSwatches}}{{customBase}}">
+                      <img style="z-index: 20; position: absolute; top: 0; margin-left: auto; margin-right: auto;" _src="{{pathToSwatches}}{{customBack}}">
+                      <img style="z-index: 30; position: absolute; top: 0; margin-left: auto; margin-right: auto;" _src="{{pathToSwatches}}{{customTop}}">
+                      <img style="z-index: 40; position: absolute; top: 0; margin-left: auto; margin-right: auto;" _src="{{pathToSwatches}}{{acrylicTop}}">
+
+              </div>
+              <div style="height:{{height}}; margin-top: 100px;">
+                  <div vertical layout>
+                      <h1 style="text-align: center;">Select Custom Colors</h1>
+                      <div>Acrylic Top</div>
+                      <div horizontal layout center-justified>
+                          <template repeat="{{acrylic in acrylicData}}">
+                              <div vertical layout center class="{{ {'highlight': acrylic.added} }}" style="margin: 10px;" data-type="{{acrylic.type}}" data-name="{{acrylic.name}}" on-click="{{handleCustom}}">
+                                  <div id="{{acrylic.name}}"></div>
+                                  {{acrylic.name}}
+                              </div>
+                          </template>
+                      </div>
+                      <div>Top Color</div>
+                      <div horizontal layout center-justified wrap style="width: 100%; height: 100%;">
+                          <!--<paper-dropdown-menu label="Side Color" resizerIsPeer="true">
+                              <paper-dropdown class="dropdown">-->
+                          <template repeat="{{swatch in topSwatchData}}">
+                              <div class="{{ {'highlight': swatch.added} }}" vertical layout center style="margin: 10px;" data-type="{{swatch.type}}" data-name="{{swatch.name}}" on-click="{{handleCustom}}"><img _src="{{pathToSwatchesThumb}}{{swatch.url}}.jpg">{{swatch.name}}</div>
+                          </template>
+
+
+                          <!--</paper-dropdown>
+                      </paper-dropdown-menu>-->
+                      </div>
+                      <div>Side Color</div>
+                      <div horizontal layout center-justified wrap style="width: 100%; height: 100%;" scrollable>
+                          <!--<paper-dropdown-menu label="Side Color" resizerIsPeer="true">
+                              <paper-dropdown class="dropdown">-->
+                          <template repeat="{{swatch in sideSwatchData}}">
+                              <div class="{{ {'highlight': swatch.added} }}" vertical layout center style="margin: 10px;" data-type="{{swatch.type}}" data-name="{{swatch.name}}" on-click="{{handleCustom}}"><img _src="{{pathToSwatchesThumb}}{{swatch.url}}.jpg">{{swatch.name}}</div>
+                          </template>
+
+
+                          <!--</paper-dropdown>
+                      </paper-dropdown-menu>-->
+                      </div>
+                      <div horizontal layout center-justified>
+                          <paper-button on-click="{{closeCustom}}">Close</paper-button>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+
+
+
+
+
+      </section>
+    </core-pages>
+
+
+<!--ring zoom-->
+    <div class="ringZoomWindow" hidden?="{{hideZoom}}">
+      <p id="ringZoomData" on-click="{{closeZoom}}">{{ringZoomData}}</p>
+      <core-icon icon="close" id="removeZoom" on-click="{{closeZoom}}"></core-icon>
+      <!--error being caused because the ringZoomImage bound data isn't available right away-->
+        <img id="ringImg" _src="{{imageZoomPath}}{{ringZoomImage}}" on-click="{{closeZoom}}"/>
+    </div>
+  </div>
+
+
+
+<!--pop up windows-->
+  <!--switching tiers-->
+    <!--<paper-dialog heading="Are you sure?" opened="{{openIt}}" backdrop layered autoCloseDisabled>
+      <p>You are about to clear all tier data and start a new tier</p>
+      <paper-button noink recenteringTouch="true" type="button" on-click="{{clearTiers}}">OK</paper-button>
+      <paper-button noink recenteringTouch="true" type="button" on-click="{{cancelTierChange}}">Cancel</paper-button>
+    </paper-dialog>-->
+<!--custom display added-->
+    <paper-dialog heading="Custom Display Added" opened="{{customDisplayAdded}}" backdrop layered autoCloseDisabled>
+      <p>Please specify the custom color choices in the order notes.</p>
+      <paper-button recenteringTouch="true" type="button" on-click="{{closeCustomNotification}}">OK</paper-button>
+    </paper-dialog>
+<!--showDisplayWarning-->
+    <paper-dialog heading="You must add a display in order to continue" opened="{{showDisplayWarning}}" horizontal layout center-justified>
+        <div horizontal center-justified layout>
+            <paper-button on-click="{{goToAccessories}}">Tap here to go to accessories</paper-button>
+        </div>
+    </paper-dialog>
+<!--showTermsWarning-->
+    <paper-toast text="You must agree to the terms and conditions to continue" opened="{{showTermsWarning}}"></paper-toast>
+<!--showFieldsWarning-->
+    <paper-toast text="You must fill out required fields" opened="{{showCannotHaveBlank}}"></paper-toast>
+<!--start over-->
+    <paper-dialog heading="Are you sure?" opened="{{openIt2}}" backdrop layered autoCloseDisabled>
+      <p>You are about to clear all tier and accessory data and start over</p>
+      <paper-button recenteringTouch="true" type="button"><a _href="{{pathToIndex}}">OK</a></paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{cancelStartOver}}">Cancel</paper-button>
+    </paper-dialog>
+<!--back warning-->
+    <paper-dialog heading="Warning!" opened="{{backwarning}}" backdrop layered autoCloseDisabled>
+      <p>If you have already uploaded the Signature, you will not be able to upload it again. Changing customer data may cause errors.</p>
+      <paper-button recenteringTouch="true" type="button" on-click="{{back2}}">I'll Risk It</paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{warning}}">Stay Where I Am</paper-button>
+    </paper-dialog>
+
+    <paper-dialog heading="Load Memory Stored Order?" opened="{{openLoadingWarning}}" backdrop layered autoCloseDisabled>
+      <p>Would you like to load the order saved in memory</p>
+      <paper-button recenteringTouch="true" type="button" on-click="{{doIt2}}">Yes</paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{closeLoadWarning}}">No</paper-button>
+    </paper-dialog>
+    <paper-dialog heading="Save Order?" opened="{{viewSaveOrderDialog}}" backdrop layered autoCloseDisabled on-core-overlay-open-completed="{{saveOrderDialogOpen}}">
+      <p>Please name your order:</p>
+      <input type="text" id="orderName" on-keyup="{{handleSaveOrderKeyEvent}}">
+
+      <paper-button recenteringTouch="true" type="button" on-click="{{saveOrderToPHP}}">Yes</paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{closeSaveOrderDialog}}">No</paper-button>
+    </paper-dialog>
+    <paper-dialog heading="Email Order?" opened="{{openEmailedNotice}}" backdrop layered autoCloseDisabled>
+
+      <p>Email the order to {{orderemail}}?</p>
+      <paper-button recenteringTouch="true" type="button" on-click="{{okayToEmail}}">OK</paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{cancelEmail}}">Cancel</paper-button>
+    </paper-dialog>
+
+    <!--<paper-dialog heading="Remove Ring?" opened="{{showRemoveRingWarning}}" backdrop layered autoCloseDisabled>
+      <paper-input type="text" Label="Please name your order:" floatingLabel="true" id="orderName"></paper-input>
+      <p>Would you like to save the order?</p>
+      <paper-button recenteringTouch="true" type="button" on-click="{{saveOrderToPHP}}">Yes</paper-button>
+      <paper-button recenteringTouch="true" type="button" on-click="{{closeSaveOrderDialog}}">No</paper-button>
+    </paper-dialog>-->
+
+
+
+
+
+
+<!--guarantee-->
+    <paper-dialog heading="Guaranteed Sale Program" opened="{{showguaranteed}}" backdrop layered>
+      <p><b>Offer:</b>
+          <p>1. If a store purchases a Tier 4 and The Knot, Lashbrook will guarantee at least a one-time turn of the investment during the first year that they have the product in the case.  If the store fails to sell $15,000, at wholesale, from the case and/or in special orders, Lashbrook will buy back product in an amount equal to the shortfall.
+          <br>2. Total Investment:   $14,997
+          <br>3. 30/60/90 (Three payments of $4999)
+          <br>4. No substitutions to the Tier 4.
+          <br>5. No stock balancing, unless initiated by Lashbrook, during the first year.</p>
+
+          <p><b>The following requirements must be met in order to qualify for buyback:</b>
+          <br>1. Payment terms must be met within a 10 day grace period.
+          <br>2. Store personnel must do Lashbrook training within 30 days of receipt of merchandise.
+          <br>3. Store must provide the information necessary for proper Knot promotion within ten business days of each request.
+          <br>4. Product must be properly displayed.
+          <br>5. Store will have 60 days from end of 12 month period to notify us that they want a buyback.</p>
+
+          <p><b>Lashbrook buyback commitment:</b>
+          <br>1. If conditions are met, Lashbrook will buy back the Lashbrook product that the jeweler chooses, also with 30/60/90 terms.  For example, if a jeweler sells only $9,000 at wholesale during the first year, he may choose $6000 of product to sell back and Lashbrook will pay $2000/month for three months.</p>
+      <paper-button noink recenteringTouch="true" on-click="{{closeGuarantee}}" style="border-radius: 10px; z-index: 5000; background-color: #7998ac; color: #ddc77c;"><h2>Close</h2></paper-button>
+    </paper-dialog>
+
+
+
+<!--
+    <paper-button raised recenteringTouch="true" id="tiersallscroll" class="scrollbutton" on-click="{{getWidthHeight}}"><core-icon icon="expand-less"></core-icon>Test</paper-button>
+-->
+    <paper-button raised recenteringTouch="true" id="tiersallscroll" hidden?="{{hideScrollButton}}" class="scrollbutton" on-click="{{scrollIt}}"><core-icon icon="expand-less"></core-icon>Scroll To Top</paper-button>
+    <paper-icon-button raised recenteringTouch="true" id="rightscroll" class="scrollbutton2" on-click="{{scrollIt2}}" icon="expand-less"></paper-icon-button>
+    <core-ajax-dart id="loadDataID" url="{{pathToPhpLoad}}" handleAs="json" on-core-response="{{onPHPDataLoaded}}"></core-ajax-dart>
+  </template>
+
+  <script type="application/dart" src="rings_view.dart"></script>
+</polymer-element>

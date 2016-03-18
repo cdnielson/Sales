@@ -1,0 +1,93 @@
+{	category	:	Titanium	SKU	:	8FGE4X	finish	:	Satin/Polish	price	:	89	{	1				}						
+{	category	:	Titanium	SKU	:	9FCLADDAGHCELTIC	finish	:	Bead/Polish	price	:	119	{	1				}						
+{	category	:	Zirconium	SKU	:	Z8DGE	finish	:	Hammer/Polish	price	:	114	{	1				}						
+{	category	:	Zirconium	SKU	:	Z6D11OC/14KY	finish	:	Bead	price	:	199	{	1				}						
+{	category	:	Zirconium	SKU	:	Z7D/BARB	finish	:	Polish	price	:	149	{	1				}						
+{	category	:	Zirconium	SKU	:	Z8FGE	finish	:	Cross Satin Silver/Pol	price	:	99	{	1				}						
+{	category	:	TCR	SKU	:	CT09TG142	finish	:	Polish	price	:	129	{	1				}						
+{	category	:	TCR	SKU	:	CT08RC048	finish	:	Polish	price	:	129	{	1				}						
+{	category	:	TCR	SKU	:	TCR8335	finish	:	Polish/Sand	price	:	129	{	1				}						
+{	category	:	Cobalt Profiles	SKU	:	 CC8DB	finish	:	Satin/Pol	price	:	99	{	1				}						
+{	category	:	Cobalt Profiles	SKU	:	CC7.5FGEW2UMIL	finish	:	Hammer/Pol	price	:	114	{	1				}						
+{	category	:	Cobalt Profiles	SKU	:	CC6D	finish	:	Polish	price	:	99	{	1				}						
+{	category	:	Cobalt Profiles	SKU	:	CC8FGE	finish	:	Cross Satin/Pol	price	:	99	{	1				}						
+{	category	:	His/Hers	SKU	:	CC7DGE	finish	:	Angle Satin/Pol	price	:	109	{	1				}						
+{	category	:	"Carbon Fiber
+Collection"	SKU	:	C6FGE13/CF	finish	:	Polish	price	:	129	{	1				}						
+{	category	:	"Carbon Fiber
+Collection"	SKU	:	ZC8B15/CF	finish	:	Polish	price	:	199	{	1				}						
+{	category	:	Cobalt Chrome	SKU	:	CC8HB/LCVFINGERPRINT	finish	:	Satin/Pol	price	:	174	{	1				}						
+{	category	:	Cobalt Chrome	SKU	:	CC8DBASEBALLA	finish	:	Red/Bead	price	:	149	{	1				}						
+{	category	:	Cobalt Chrome	SKU	:	CC7D21W/14KYMIL	finish	:	Hammer/Pol	price	:	294	{	1				}						
+{	category	:	Damascus	SKU	:	D8DFLATTWIST11OC/14KY	finish	:	Acid	price	:	299	{	1				}						
+{	category	:	Damascus	SKU	:	ZPF8D14/DAMASCUS	finish	:	Acid/Pol	price	:	229	{	1				}						
+{	category	:	Damascus	SKU	:	D7D	finish	:	Acid	price	:	159	{	1				}						
+{	category	:	Damascus	SKU	:	D8DBTIGER	finish	:	Polish	price	:	199	{	1				}						
+{	category	:	Damascus	SKU	:	D7B	finish	:	Polish	price	:	159	{	1				}						
+{	category	:	"Outdoor
+Collection"	SKU	:	8B15(NS)/RTMAX4	finish	:	Polish	price	:	139	{	1				}						
+{	category	:	"Meteorite
+Collection"	SKU	:	7F15/METEORITE	finish	:	Polish	price	:	299	{	1				}						
+{	category	:	Titanium	SKU	:	6REF11/14KR2UMIL	finish	:	Satin/Pol	price	:	149	{	1	2			}						
+{	category	:	Zirconium	SKU	:	Z8D/CYCLE2	finish	:	Bead	price	:	149	{	1	2			}						
+{	category	:	Zirconium	SKU	:	Z8FGE/BLCVCELTIC10	finish	:	Satin Silver/Pol	price	:	149	{	1	2			}						
+{	category	:	TCR	SKU	:	TCR8422	finish	:	Satin/Pol	price	:	129	{	1	2			}						
+{	category	:	TCR	SKU	:	TCR8349	finish	:	Polish	price	:	129	{	1	2			}						
+{	category	:	Cobalt Profiles	SKU	:	CC7HB2UMIL(NS)	finish	:	Polish	price	:	99	{	1	2			}						
+{	category	:	Cobalt Profiles	SKU	:	CC7D1.5OC	finish	:	Bead/Pol	price	:	99	{	1	2			}						
+{	category	:	His/Hers	SKU	:	CC5DGE	finish	:	Angle Satin/Pol	price	:	109	{	1	2			}						
+{	category	:	"Carbon Fiber
+Collection"	SKU	:	C8F14/SILVERCF	finish	:	Polish	price	:	129	{	1	2			}						
+{	category	:	Cobalt Chrome	SKU	:	CC7.5FGEW2UMIL13/14KR	finish	:	Hammer/Pol	price	:	314	{	1	2			}						
+{	category	:	Cobalt Chrome	SKU	:	CC8FMKBA	finish	:	Bead/Pol	price	:	149	{	1	2			}						
+{	category	:	Cobalt Chrome	SKU	:	CC7DGE/LCVCELTIC9	finish	:	Angle Satin/Pol	price	:	159	{	1	2			}						
+{	category	:	Damascus	SKU	:	D8D2.5	finish	:	Acid/bead	price	:	159	{	1	2			}						
+{	category	:	Damascus	SKU	:	D8RED	finish	:	Polish	price	:	159	{	1	2			}						
+{	category	:	Damascus	SKU	:	D8FSQZEBRA	finish	:	Polish	price	:	199	{	1	2			}						
+{	category	:	"Outdoor
+Collection"	SKU	:	CC5F13/MOCPBU	finish	:	Polish	price	:	199	{	1	2			}						
+{	category	:	"Mokume
+Collection"	SKU	:	Z8FGE13/M14KRSH	finish	:	Satin/Pol	price	:	329	{	1	2			}						
+{	category	:	"Meteorite
+Collection"	SKU	:	Z8D15/METEORITE 	finish	:	Polish	price	:	379	{	1	2			}						
+{	category	:	Titanium	SKU	:	8D	finish	:	Polish	price	:	35	{	1	2	3		}						
+{	category	:	Zirconium	SKU	:	Z8B(S)	finish	:	Cross Satin Black/Polish	price	:	99	{	1	2	3		}						
+{	category	:	Zirconium	SKU	:	Z8BDDIA3X.05B	finish	:	Pol/Sat/Pol	price	:	349	{	1	2	3		}						
+{	category	:	Zirconium	SKU	:	Z6D12/14KR	finish	:	Hammer 	price	:	264	{	1	2	3		}						
+{	category	:	Zirconium	SKU	:	Z7FGE	finish	:	Satin/Pol	price	:	99	{	1	2	3		}						
+{	category	:	Zirconium	SKU	:	PF8B16/ZIRCONIUM	finish	:	Treebark 1/Pol	price	:	184	{	1	2	3		}						
+{	category	:	Cobalt Profiles	SKU	:	CC8REC	finish	:	Treebark 1/Pol	price	:	114	{	1	2	3		}						
+{	category	:	Cobalt Profiles	SKU	:	CC8WHB	finish	:	Angle Stone/Polish	price	:	109	{	1	2	3		}						
+{	category	:	Cobalt Profiles	SKU	:	CC7CB	finish	:	Satin/Pol	price	:	99	{	1	2	3		}						
+{	category	:	Cobalt Profiles	SKU	:	CC6B	finish	:	Stone/Pol	price	:	99	{	1	2	3		}						
+{	category	:	Cobalt Chrome	SKU	:	CC8FGESQ	finish	:	Hammer/Pol	price	:	164	{	1	2	3		}						
+{	category	:	Cobalt Chrome	SKU	:	CC6FGEW2UMIL13C/14KY	finish	:	Satin/Pol	price	:	299	{	1	2	3		}						
+{	category	:	Cobalt Chrome	SKU	:	CC8B6SEG	finish	:	Satin/Pol	price	:	149	{	1	2	3		}						
+{	category	:	Damascus	SKU	:	ZPF7D15/DAMASCUS11/14KR	finish	:	Satin/Acid/Pol	price	:	329	{	1	2	3		}						
+{	category	:	Damascus	SKU	:	D8F11ANGLED/SS	finish	:	Acid/Pol	price	:	239	{	1	2	3		}						
+{	category	:	"Outdoor
+Collection"	SKU	:	Z8FGE15/KINGSFIELD	finish	:	Polish	price	:	189	{	1	2	3		}						
+{	category	:	"Mokume
+Collection"	SKU	:	CC8D13/M18KYSH	finish	:	Satin	price	:	379	{	1	2	3		}						
+{	category	:	Titanium	SKU	:	8FGG	finish	:	Satin/Polish	price	:	35	{	1	2	3	4	}						
+{	category	:	Zirconium	SKU	:	Z6D/WLCVSOUNDWAVE	finish	:	Polish	price	:	199	{	1	2	3	4	}						
+{	category	:	Zirconium	SKU	:	Z8D/3.5	finish	:	Polish	price	:	129	{	1	2	3	4	}						
+{	category	:	Zirconium	SKU	:	CCPF9FSQ16/Z	finish	:	Hammer/Polish	price	:	294	{	1	2	3	4	}						
+{	category	:	Zirconium	SKU	:	Z7DGE	finish	:	Angle Satin/Polish	price	:	114	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC8WB/LCVROMANNUMERAL2	finish	:	Sand/Satin/Polish 	price	:	164	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC8D12/LAPIS	finish	:	Sand/Satin/Polish 	price	:	199	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC8D/LCVCELTIC17A2	finish	:	Polish	price	:	149	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC8DLCVESCHER1	finish	:	Bead	price	:	149	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC9B21WADIA3X.03F	finish	:	Bead/Polish	price	:	279	{	1	2	3	4	}						
+{	category	:	Cobalt Chrome	SKU	:	CC8HRMMJBA	finish	:	Bead/Polish	price	:	149	{	1	2	3	4	}						
+{	category	:	Damascus	SKU	:	D10D	finish	:	Acid	price	:	199	{	1	2	3	4	}						
+{	category	:	Damascus	SKU	:	D8DBASKET	finish	:	Polish	price	:	199	{	1	2	3	4	}						
+{	category	:	Damascus	SKU	:	D8CBZEBRA	finish	:	Acid	price	:	199	{	1	2	3	4	}						
+{	category	:	"Outdoor
+Collection"	SKU	:	9FLCVELKMOUNTAIN	finish	:	Sand/Satin	price	:	119	{	1	2	3	4	}						
+{	category	:	"Outdoor
+Collection"	SKU	:	Z8FFISHHOOKS2	finish	:	Bead/Polish	price	:	149	{	1	2	3	4	}						
+{	category	:	"Mokume
+Collection"	SKU	:	CC8.5FGESQ15/MSSPD	finish	:	Bead/Pol	price	:	549	{	1	2	3	4	}						
+{	category	:	"Meteorite
+Collection"	SKU	:	CC9B15(NS)/METEORITE	finish	:	Rock Polish	price	:	394	{	1	2	3	4	}						

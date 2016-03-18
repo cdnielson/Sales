@@ -1,0 +1,53 @@
+[
+
+  {"id":60000,"category":"Titanium","SKU":"10HR(1)5G-AI-DEER","finish":"polish","price":175,"tier":0,"image":"10HR(1)5G-AI-DEER.jpg"},
+  {"id":60001,"category":"Titanium","SKU":"4F","finish":"satin","price":35,"tier":0,"image":"4F.jpg"},
+  {"id":60002,"category":"Titanium","SKU":"5D/LCVBOGGER","finish":"sand/polish","price":119,"tier":0,"image":"5D_LCVBOGGER.jpg"},
+  {"id":60003,"category":"Titanium","SKU":"5FB","finish":"TBH","price":55,"tier":0,"image":"5FB.jpg"},
+  {"id":60004,"category":"Titanium","SKU":"5FGE","finish":"satin/polish","price":35,"tier":0,"image":"5FGE.jpg"},
+  {"id":60005,"category":"Titanium","SKU":"6F2.5W","finish":"hammer/polish","price":50,"tier":0,"image":"6F2.5W.jpg"},
+  {"id":60006,"category":"Titanium","SKU":"6FGE","finish":"stone/polish","price":35,"tier":0,"image":"6FGE.jpg"},
+  {"id":60007,"category":"Titanium","SKU":"6HRCP","finish":"satin","price":35,"tier":0,"image":"6HRCP.jpg"},
+  {"id":60008,"category":"Titanium","SKU":"6LC/RG","finish":"TBH","price":305,"tier":0,"image":"6LC-RG.jpg"},
+  {"id":60009,"category":"Titanium","SKU":"6PGE","finish":"satin/polish","price":35,"tier":0,"image":"6PGE.jpg"},
+  {"id":60010,"category":"Titanium","SKU":"6REF","finish":"satin/polish","price":35,"tier":0,"image":"6REF.jpg"},
+  {"id":60011,"category":"Titanium","SKU":"6WB","finish":"satin/polish","price":35,"tier":0,"image":"6WB.jpg"},
+  {"id":60012,"category":"Titanium","SKU":"7B/SCROLLS/3MILLEDCROSSES","finish":"satin/polish","price":119,"tier":0,"image":"7B-SCROLLS-3MILLEDCROSSES.jpg"},
+  {"id":60013,"category":"Titanium","SKU":"7D","finish":"satin","price":35,"tier":0,"image":"7D.jpg"},
+  {"id":60014,"category":"Titanium","SKU":"7D15/MSSPD","finish":"satin","price":419,"tier":0,"image":"7D15_MSSPD.jpg"},
+  {"id":60015,"category":"Titanium","SKU":"7D21","finish":"satin","price":35,"tier":0,"image":"7D21.jpg"},
+  {"id":60016,"category":"Titanium","SKU":"7F12OC/SS","finish":"satin","price":89,"tier":0,"image":"7F12OC_SS.jpg"},
+  {"id":60017,"category":"Titanium","SKU":"7FCELTIC5","finish":"all polish","price":119,"tier":0,"image":"7FCELTIC5.jpg"},
+  {"id":60018,"category":"Titanium","SKU":"7FGE22/SSSS","finish":"satin/polish","price":109,"tier":0,"image":"7FGE22_SSSS.jpg"},
+  {"id":60019,"category":"Titanium","SKU":"7FTRINITYU","finish":"sand/polish","price":119,"tier":0,"image":"7FTRINITYU.jpg"},
+  {"id":60020,"category":"Titanium","SKU":"7HR(1)2G(2).5G/ARSC","finish":"satin","price":125,"tier":0,"image":"7HR(1)2G(2)_5G-ARSC.jpg"},
+  {"id":60021,"category":"Titanium","SKU":"7HRLDC","finish":"polish","price":35,"tier":0,"image":"7HRLDC.jpg"},
+  {"id":60022,"category":"Titanium","SKU":"7REF","finish":"stone/polish","price":35,"tier":0,"image":"7REF.jpg"},
+  {"id":60023,"category":"Titanium","SKU":"8B2.5A/SS","finish":"black/satin/polish","price":89,"tier":0,"image":"8B2_5A-SS.jpg"},
+  {"id":60024,"category":"Titanium","SKU":"8BTURKEYDEER","finish":"satin/polish","price":119,"tier":0,"image":"8BTURKEYDEER.jpg"},
+  {"id":60025,"category":"Titanium","SKU":"8CB","finish":"satin/polish","price":35,"tier":0,"image":"8CB.jpg"},
+  {"id":60026,"category":"Titanium","SKU":"8D11OC","finish":"sandblast","price":35,"tier":0,"image":"8D11OC.jpg"},
+  {"id":60027,"category":"Titanium","SKU":"8D4MIL","finish":"polish","price":35,"tier":0,"image":"8D4MIL.jpg"},
+  {"id":60028,"category":"Titanium","SKU":"8DLASER17","finish":"DP","price":65,"tier":0,"image":"8DLASER17.jpg"},
+  {"id":60029,"category":"Titanium","SKU":"8FCLADDAGHCELTIC","finish":"bronze anodizing/sand/satin","price":119,"tier":0,"image":"8FCLADDAGHCELTIC.jpg"},
+  {"id":60030,"category":"Titanium","SKU":"8FEC2WUMIL","finish":"cross satin/polish","price":35,"tier":0,"image":"8FEC2WUMIL.jpg"},
+  {"id":60031,"category":"Titanium","SKU":"8FGE11A","finish":"black/satin/polish","price":35,"tier":0,"image":"8FGE11A.jpg"},
+  {"id":60032,"category":"Titanium","SKU":"8FT","finish":"purple anodizing/satin/polish","price":40,"tier":0,"image":"8FT.jpg"},
+  {"id":60033,"category":"Titanium","SKU":"8REF11/14KR2UMIL","finish":"bead/polish","price":149,"tier":0,"image":"8REF11_14KR2UMIL.jpg"},
+  {"id":60034,"category":"Titanium","SKU":"8REF13/14KY","finish":"stone/polish","price":279,"tier":0,"image":"8REF13_14KY.jpg"},
+  {"id":60035,"category":"Titanium","SKU":"8RSPCG","finish":"stone/polish","price":40,"tier":0,"image":"8RSPCG.jpg"},
+  {"id":60036,"category":"Titanium","SKU":"9DGETRIBA","finish":"blue antiquing/satin/polish","price":134,"tier":0,"image":"9DGETRIB.jpg"},
+  {"id":60037,"category":"Titanium","SKU":"9F","finish":"brown anodizing/sand","price":35,"tier":0,"image":"9F.jpg"},
+  {"id":60038,"category":"Titanium","SKU":"9F4.5W/SS","finish":"polish","price":129,"tier":0,"image":"9F4.5W_SS.jpg"},
+  {"id":60039,"category":"Titanium","SKU":"9FDEERTRACKANTLER","finish":"brown anodizing/satin","price":119,"tier":0,"image":"9FDEERTRACKANTLER.jpg"},
+  {"id":60040,"category":"Titanium","SKU":"9FGE/LCVMUSKYANTLER","finish":"satin/polish","price":119,"tier":0,"image":"9FGE_LCVMUSKYANTLER.jpg"},
+  {"id":60041,"category":"Titanium","SKU":"9FHELICALSPINNER","finish":"blue anodizing/sand/satin","price":139,"tier":0,"image":"9FHELICALSPINNER.jpg"},
+  {"id":60042,"category":"Titanium","SKU":"9HRRC","finish":"TBB","price":55,"tier":0,"image":"9HRRC.jpg"},
+  {"id":60043,"category":"Titanium","SKU":"8FDUCKBAND","finish":"polish","price":0,"tier":0,"image":"8FDUCK.jpg"}
+
+
+
+
+]
+
+

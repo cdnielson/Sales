@@ -1,0 +1,41 @@
+[
+
+  {"id":301,"category":"Cobalt Chrome","SKU":"CC6D","finish":"POLISH","price":99,"tier":1,"image":"CC6D.jpg"},
+  {"id":302,"category":"Cobalt Chrome","SKU":"CC7.5FGEW2UMIL","finish":"HAMMER/POLISH","price":114,"tier":1,"image":"024_CC7_5FGEW2MIL.jpg"},
+  {"id":303,"category":"Cobalt Chrome","SKU":"CC7D21W/14KYMIL","finish":"HAMMER/POLISH","price":294,"tier":1,"image":"CC7D21W_14KYMIL.jpg"},
+  {"id":304,"category":"Cobalt Chrome","SKU":"CC7DGE","finish":"ANGLE SATIN/POLISH","price":109,"tier":1,"image":"025_CC7DGE.jpg"},
+  {"id":305,"category":"Cobalt Chrome","SKU":"CC8DB","finish":"SATIN/POLISH","price":99,"tier":1,"image":"CC8DB.jpg"},
+  {"id":306,"category":"Cobalt Chrome","SKU":"CC8DBASEBALLA","finish":"RED/BEAD","price":149,"tier":1,"image":"CC8DBASEBALLA.jpg"},
+  {"id":307,"category":"Cobalt Chrome","SKU":"CC8FGE","finish":"CROSS SATIN/POLISH","price":99,"tier":1,"image":"CC8FGE.jpg"},
+  {"id":308,"category":"Cobalt Chrome","SKU":"CC8HB/LCVFINGERRINT","finish":"SATIN/POLISH","price":174,"tier":1,"image":"CC8HB_LCVFINGERPRINTS_SATIN-POLISH.jpg"},
+
+  {"id":309,"category":"Cobalt Chrome","SKU":"CC5DGE","finish":"ANGLE SATIN/POLISH","price":109,"tier":2,"image":"CC5DGE_ANGLE_SATIN_POLISH.jpg"},
+
+  {"id":310,"category":"Cobalt Chrome","SKU":"CC7.5FGEW2UMIL13/14KR","finish":"HAMMER/POLISH","price":314,"tier":2,"image":"CC7_5FGEW13_14KR2MIL.jpg"},
+  {"id":311,"category":"Cobalt Chrome","SKU":"CC7D1.5OC","finish":"BEAD/POLISH","price":99,"tier":2,"image":"CC7D1_5OC.jpg"},
+  {"id":312,"category":"Cobalt Chrome","SKU":"CC7DGE/LCVCELTIC9","finish":"ANGLE SATIN/POLISH","price":159,"tier":2,"image":"CC7DGELCVCELTIC9_Angle_Satin_Polish.jpg"},
+  {"id":313,"category":"Cobalt Chrome","SKU":"CC7HB2UMIL(NS)","finish":"POLISH","price":99,"tier":2,"image":"CC7HB2UMIL(NS)_SATIN_POLISH.jpg"},
+  {"id":314,"category":"Cobalt Chrome","SKU":"CC8FMKBA","finish":"BEAD/POLISH","price":149,"tier":2,"image":"CB_8F_P_MKBA.jpg"},
+
+  {"id":315,"category":"Cobalt Chrome","SKU":"CC6B","finish":"STONE/POLISH","price":99,"tier":3,"image":"CC6B.jpg"},
+  {"id":316,"category":"Cobalt Chrome","SKU":"CC6FGEW2UMIL13C/14KY","finish":"SATIN/POLISH","price":299,"tier":3,"image":"CC6FGEW2UMIL13C_14KY.jpg"},
+  {"id":317,"category":"Cobalt Chrome","SKU":"CC7CB","finish":"SATIN/POLISH","price":99,"tier":3,"image":"CC7CB.jpg"},
+  {"id":318,"category":"Cobalt Chrome","SKU":"CC8B6SEG","finish":"SATIN/POLISH","price":149,"tier":3,"image":"004_CC8B6SEG.jpg"},
+  {"id":319,"category":"Cobalt Chrome","SKU":"CC8D13/M18KYSH","finish":"SATIN","price":379,"tier":3,"image":"CC8D13_M18KYSH.jpg"},
+  {"id":320,"category":"Cobalt Chrome","SKU":"CC8FGESQ","finish":"HAMMER/POLISH","price":164,"tier":3,"image":"CC8FGESQ.jpg"},
+  {"id":321,"category":"Cobalt Chrome","SKU":"CC8REC","finish":"TREEBARK 1/POLISH","price":114,"tier":3,"image":"CC8REC_TB1_SAND_POLISH.jpg"},
+  {"id":322,"category":"Cobalt Chrome","SKU":"CC8WHB","finish":"ANGLE STONE/POLISH","price":109,"tier":3,"image":"CC8WHB_ANGLE_STONE-POLISH.jpg"},
+
+  {"id":323,"category":"Cobalt Chrome","SKU":"CC8.5FGESQ15/MSSPD","finish":"BEAD/POLISH","price":549,"tier":4,"image":"CC8.5FGESQ15-MSSPD_BEAD_POLISH.jpg"},
+
+  {"id":324,"category":"Cobalt Chrome","SKU":"CC8D/LCVCELTIC17A2","finish":"POLISH","price":149,"tier":4,"image":"CC8DLCVCELTIC17A2_POLISH.jpg"},
+  {"id":325,"category":"Cobalt Chrome","SKU":"CC8D/LCVESCHER1","finish":"BEAD","price":149,"tier":4,"image":"CC8DLCVESCHER1-BEAD_SATIN.jpg"},
+  {"id":326,"category":"Cobalt Chrome","SKU":"CC8D12/LAPIS","finish":"SANDBLAST","price":199,"tier":4,"image":"CC8D12_LAPIS.jpg"},
+  {"id":327,"category":"Cobalt Chrome","SKU":"CC8HRM/MJBA","finish":"BEAD/POLISH","price":149,"tier":4,"image":"CB_8HRM_P_MJBA.jpg"},
+  {"id":328,"category":"Cobalt Chrome","SKU":"CC8WB/LCVROMANNUMERAL2","finish":"SAND/SATIN/POLISH","price":164,"tier":4,"image":"CC8DWBLCVROMNUMERAL2_SAND_SATIN_POLISH.jpg"},
+  {"id":329,"category":"Cobalt Chrome","SKU":"CC9B21WADIA3X.03F","finish":"BEAD/POLISH","price":279,"tier":4,"image":"CC9B21ADIA3_x05_NS.jpg"},
+  {"id":330,"category":"Cobalt Chrome","SKU":"CCPF9FSQ16/Z","finish":"HAMMER/POLISH","price":294,"tier":4,"image":"CCPF9FGESQ16_Z.jpg"}
+
+
+]
+

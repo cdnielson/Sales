@@ -1,0 +1,17 @@
+[
+
+    {"id":601,"category":"Titanium","SKU":"8FGE4X","finish":"SATIN/POLISH","price":89,"tier":1,"image":"8FGE4X.jpg"},
+    {"id":602,"category":"Titanium","SKU":"9FCLADDAGHCELTIC","finish":"BEAD/POLISH","price":119,"tier":1,"image":"9FCLADDAGHCELTIC.jpg"},
+
+    {"id":603,"category":"Titanium","SKU":"6REF11/14KR2UMIL","finish":"SATIN/POLISH","price":149,"tier":2,"image":"6REF11_14KR2UMIL.jpg"},
+
+    {"id":604,"category":"Titanium","SKU":"8D","finish":"POLISH","price":35,"tier":3,"image":"7D.jpg"},
+
+    {"id":605,"category":"Titanium","SKU":"PF8B16/ZIRCONIUM","finish":"TREEBARK 1/POLISH","price":184,"tier":3,"image":"PF8B16Zirconium_TB1_POLISH.jpg"},
+
+    {"id":606,"category":"Titanium","SKU":"8F2S","finish":"SATIN/POLISH","price":35,"tier":4,"image":"8FGG.jpg"},
+    {"id":607,"category":"Titanium","SKU":"9FLCVELKMOUNTAIN","finish":"SAND/SATIN ","price":119,"tier":4,"image":"9FLCVELKMOUNTAIN_SATIN.jpg"}
+
+
+]
+

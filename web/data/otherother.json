@@ -1,0 +1,20 @@
+[
+
+  {"id":90000,"category":"Mokume","SKU":"M6D14R14PWSS","finish":"beadblast","price":1557,"tier":0,"image":"M6D14R14PWSS.jpg"},
+  {"id":90001,"category":"Ceramic","SKU":"CR8FGE","finish":"satin/polish","price":75,"tier":0,"image":"CR8FGE.jpg"},
+  {"id":90002,"category":"Precious Metal","SKU":"14KW6B","finish":"stone/polish","price":419,"tier":0,"image":"14KW6B.jpg"},
+  {"id":90003,"category":"Precious Metal","SKU":"18KW7B","finish":"stone/polish","price":582,"tier":0,"image":"18KW7B.jpg"},
+  {"id":90004,"category":"Stainless Steel","SKU":"SFGE","finish":"cross satin/polish","price":35,"tier":0,"image":"SFGE_CROSSSATIN.jpg"},
+  {"id":90005,"category":"Goodyear","SKU":"Z10FRASSURANCE","finish":"bead/polish","price":149,"tier":0,"image":"Z10FRASSURANCE.jpg"},
+  {"id":90006,"category":"Elysium","SKU":"ELYSIUM BEVELED LASER","finish":"Polish","price":719,"tier":0,"image":"BD_01.jpg"},
+  {"id":90007,"category":"Elysium","SKU":"ELYSIUM BEVELED MATTE STONE GREEN","finish":"Matte","price":999,"tier":0,"image":"BD_08.jpg"},
+  {"id":90008,"category":"Elysium","SKU":"ELYSIUM BEVELED POLISHED","finish":"Polish","price":649,"tier":0,"image":"BD_05.jpg"},
+  {"id":90009,"category":"Elysium","SKU":"ELYSIUM DOME MATTE","finish":"Matte","price":649,"tier":0,"image":"BD_04.jpg"},
+  {"id":90010,"category":"Elysium","SKU":"ELYSIUM DOME POLISHED","finish":"Polish","price":649,"tier":0,"image":"BD_02.jpg"},
+  {"id":90011,"category":"Elysium","SKU":"ELYSIUM ROUNDED LASER","finish":"Polish","price":719,"tier":0,"image":"noimage.jpg"},
+  {"id":90012,"category":"Elysium","SKU":"ELYSIUM ROUNDED SATIN","finish":"Satin","price":649,"tier":0,"image":"BD_03.jpg"}
+
+
+
+]
+

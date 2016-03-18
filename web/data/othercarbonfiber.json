@@ -1,0 +1,19 @@
+[
+  {"id":20000,"category":"Carbon Fiber","SKU":"C10F19/CF","finish":"polish","price":129,"tier":0,"image":"C10F19_CF.jpg"},
+  {"id":20001,"category":"Carbon Fiber","SKU":"C6FGE13/SILVERCF","finish":"polish","price":129,"tier":0,"image":"C6FGE13_SILVERCF.jpg"},
+  {"id":20002,"category":"Carbon Fiber","SKU":"C8B13/CF(NS)","finish":"polish","price":129,"tier":0,"image":"C8B13_CF(NS).jpg"},
+  {"id":20003,"category":"Carbon Fiber","SKU":"C8F1321/CF14KY","finish":"polish","price":273,"tier":0,"image":"C8F1321_CF14KY.jpg"},
+  {"id":20004,"category":"Carbon Fiber","SKU":"C8F4SEG/CF","finish":"polish","price":159,"tier":0,"image":"C8F4SEG_CF.jpg"},
+  {"id":20005,"category":"Carbon Fiber","SKU":"C9F14/CF","finish":"polish","price":129,"tier":0,"image":"C9F14_CF.jpg"},
+  {"id":20006,"category":"Carbon Fiber","SKU":"ZC8FGEW2MIL14_SILVERCF","finish":"polish","price":199,"tier":0,"image":"ZC8FGEW2MIL14_SILVERCF.jpg"},
+  {"id":20007,"category":"Carbon Fiber","SKU":"ZC9B15_CF","finish":"beadblast","price":199,"tier":0,"image":"ZC9B15_CF.jpg"},
+  {"id":20008,"category":"Carbon Fiber","SKU":"ZC9FGEW2UMIL15-SILVERCF","finish":"polish","price":199,"tier":0,"image":"ZC9FGEW2UMIL15_SILVERCF.jpg"},
+  {"id":20009,"category":"Carbon Fiber","SKU":"C10B15/CF(NS)","finish":"polish","price":0,"tier":0,"image":"C10B15_CF_NS.jpg"},
+  {"id":20010,"category":"Carbon Fiber","SKU":"ZC8B15/CF","finish":"polish","price":0,"tier":0,"image":"ZC8B15_CF.jpg"},
+  {"id":30000,"category":"Carbon Fiber","SKU":"ZC8B15/SILVERCF","finish":"polish","price":0,"tier":0,"image":"ZC8B15_SILVERCF.jpg"}
+
+
+
+
+]
+

@@ -1,0 +1,22 @@
+[
+
+    {"id":801,"category":"Zirconium","SKU":"Z6D11OC/14KY","finish":"BEAD ","price":199,"tier":1,"image":"Z6D11OC_14KY_2.jpg"},
+    {"id":802,"category":"Zirconium","SKU":"Z7D/BARB","finish":"POLISH","price":149,"tier":1,"image":"Z7DBARB.jpg"},
+    {"id":803,"category":"Zirconium","SKU":"Z8DGE","finish":"HAMMER/POLISH","price":114,"tier":1,"image":"Z7DGE.jpg"},
+    {"id":804,"category":"Zirconium","SKU":"Z8FGE","finish":"CROSS SATIN SILVER/POLISH","price":99,"tier":1,"image":"Z8FGE.jpg"},
+    {"id":805,"category":"Zirconium","SKU":"ZPF8D14/DAMASCUS","finish":"ACID/POLISH","price":229,"tier":1,"image":"Z8D14_DAMASCUS.jpg"},
+    {"id":806,"category":"Zirconium","SKU":"Z8D/CYCLE2","finish":"BEAD","price":149,"tier":2,"image":"Z8DCYCLE2.jpg"},
+    {"id":807,"category":"Zirconium","SKU":"Z8FGE/BLCVCELTIC10","finish":"SATIN SILVER/POL","price":149,"tier":2,"image":"Z8FGELCVCELTIC10_SILVER_SATIN_POLISH.jpg"},
+    {"id":808,"category":"Zirconium","SKU":"Z8FGE13/M14KRSH","finish":"SATIN/POLISH","price":329,"tier":2,"image":"Z8FGE13-M14KRSH_SATIN_POLISH.jpg"},
+    {"id":809,"category":"Zirconium","SKU":"Z6D12/14KR","finish":"HAMMER","price":264,"tier":3,"image":"Z6D12_14KR_Hammer.jpg"},
+    {"id":810,"category":"Zirconium","SKU":"Z7FGE","finish":"SATIN/POLISH","price":99,"tier":3,"image":"Z7FGE.jpg"},
+    {"id":811,"category":"Zirconium","SKU":"Z8B(S)","finish":"CROSS SATIN BLACK/POLISH","price":99,"tier":3,"image":"Z8B.jpg"},
+    {"id":812,"category":"Zirconium","SKU":"Z8BDDIA3X.05B","finish":"POLISH/SATIN/POLISH","price":349,"tier":3,"image":"Z8BDBLKDIA3X_05B.jpg"},
+    {"id":813,"category":"Zirconium","SKU":"ZPF7D15/DAMASCUS11/14KR","finish":"SATIN/ACID/POLISH","price":329,"tier":3,"image":"Z7D15_DAMASCUS11_14KROSE.jpg"},
+    {"id":814,"category":"Zirconium","SKU":"Z6D/WLCVSOUNDWAVE","finish":"POLISH","price":199,"tier":4,"image":"Z6D_LCVSOUNDWAVE_P.jpg"},
+    {"id":815,"category":"Zirconium","SKU":"Z7DGE","finish":"ANGLE SATIN/POLISH","price":114,"tier":4,"image":"Z7DGE.jpg"},
+    {"id":816,"category":"Zirconium","SKU":"Z8D/3.5","finish":"POLISH","price":129,"tier":4,"image":"Z8D3_5.jpg"},
+    {"id":817,"category":"Zirconium","SKU":"Z8FFISHHOOKS2","finish":"BEAD/POLISH","price":149,"tier":4,"image":"Z7FFISHHOOKS2.jpg"}
+
+]
+

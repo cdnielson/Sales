@@ -1,0 +1,11 @@
+[
+  {"id":1001,"category":"Elysium","SKU":"ELYSIUM BEVELED LASER","finish":"Polish","price":719,"tier":0,"image":"BD_01.jpg"},
+  {"id":1002,"category":"Elysium","SKU":"ELYSIUM BEVELED MATTE STONE GREEN","finish":"Matte","price":999,"tier":0,"image":"BD_08.jpg"},
+  {"id":1003,"category":"Elysium","SKU":"ELYSIUM BEVELED POLISHED","finish":"Polish","price":649,"tier":0,"image":"BD_05.jpg"},
+  {"id":1004,"category":"Elysium","SKU":"ELYSIUM DOME MATTE","finish":"Matte","price":649,"tier":0,"image":"BD_04.jpg"},
+  {"id":1005,"category":"Elysium","SKU":"ELYSIUM DOME POLISHED","finish":"Polish","price":649,"tier":0,"image":"BD_02.jpg"},
+  {"id":1006,"category":"Elysium","SKU":"ELYSIUM ROUNDED LASER","finish":"Polish","price":719,"tier":0,"image":"noimage.jpg"},
+  {"id":1007,"category":"Elysium","SKU":"ELYSIUM ROUNDED SATIN","finish":"Satin","price":649,"tier":0,"image":"BD_03.jpg"}
+
+]
+
